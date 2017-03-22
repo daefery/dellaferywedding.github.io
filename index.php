@@ -69,12 +69,13 @@
                 <label for="show-menu" class="show-menu wobble"><i class="fa fa-bars fa-lg"></i></label>
                 <input type="checkbox" id="show-menu" role="button">
                 <ul id="menu" class="onepage">
-                    <li><a href="#love-story">Our Story</a></li>
-                    <li><a href="#people">People</a></li>
-                    <li><a href="#wedding">The Wedding</a></li>
-                    <li><a href="#accommodation">Accommodation</a></li>
-                    <li><a href="#gifts">Gifts</a></li>
-                    <li><a href="#rsvp">RSVP</a></li>
+                  <li><a href="#love-story">Our Story</a></li>
+                  <li><a href="#gallery">Gallery</a></li>
+                  <li><a href="#people">People</a></li>
+                  <li><a href="#event-map">Location</a></li>
+                  <li><a href="#accommodation">Accommodation</a></li>
+                  <li><a href="#gifts">Gifts</a></li>
+                  <li><a href="#rsvp">RSVP</a></li>
                 </ul>
             </nav>
         </header>
@@ -123,6 +124,81 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- How it all began Section -->
+        <section id="how-began">
+            <div class="container">
+                <div class="row">
+                    <h1>How it all began?</h1>
+                    <div class="hr"></div>
+                    <div class="col-md-12">
+                        <ul class="timeline">
+
+                            <li>
+                                <div class="tl-circ">
+                                    <i class="fa fa-dot-circle-o"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="tl-heading">
+                                        <h4>We met for the first time</h4>
+                                        <span>August 10th 2015</span>
+                                    </div>
+                                    <div class="tl-body">
+                                        <p>Integer sed felis massa. Mauris pretium nibh sed placerat gravida. Duis malesuada eu odio tristique facilisis. Pellentesque blandit diam quis libero vehicula maximus. </p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="timeline-inverted">
+                                <div class="tl-circ">
+                                    <i class="fa fa-dot-circle-o"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="tl-heading">
+                                        <h4>Our first date</h4>
+                                        <span>August 23th 2015</span>
+                                    </div>
+                                    <div class="tl-body">
+                                        <p>Curabitur rutrum quis dolor vitae ultricies. Aenean condimentum massa quis justo commodo auctor. Fusce feugiat lacinia massa, eu dapibus nisl porttitor eu. Nullam vel nunc ut mauris fringilla ullamcorper.</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="tl-circ">
+                                    <i class="fa fa-dot-circle-o"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="tl-heading">
+                                        <h4>We live together</h4>
+                                        <span>October 30th 2015</span>
+                                    </div>
+                                    <div class="tl-body">
+                                        <p>Integer sed felis massa. Mauris pretium nibh sed placerat gravida. Duis malesuada eu odio tristique facilisis. Pellentesque blandit diam quis libero vehicula maximus.</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="timeline-inverted">
+                                <div class="tl-circ">
+                                    <i class="fa fa-dot-circle-o"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="tl-heading">
+                                        <h4>He proposed...and she said yes :)</h4>
+                                        <span>November 10th 2015</span>
+                                    </div>
+                                    <div class="tl-body">
+                                        <p>Curabitur rutrum quis dolor vitae ultricies. Aenean condimentum massa quis justo commodo auctor. Fusce feugiat lacinia massa, eu dapibus nisl porttitor eu. Nullam vel nunc ut mauris fringilla ullamcorper.</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -215,81 +291,6 @@
 
         </section>
 
-        <!-- How it all began Section -->
-        <section id="how-began">
-            <div class="container">
-                <div class="row">
-                    <h1>How it all began?</h1>
-                    <div class="hr"></div>
-                    <div class="col-md-12">
-                        <ul class="timeline">
-
-                            <li>
-                                <div class="tl-circ">
-                                    <i class="fa fa-dot-circle-o"></i>
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="tl-heading">
-                                        <h4>We met for the first time</h4>
-                                        <span>August 10th 2015</span>
-                                    </div>
-                                    <div class="tl-body">
-                                        <p>Integer sed felis massa. Mauris pretium nibh sed placerat gravida. Duis malesuada eu odio tristique facilisis. Pellentesque blandit diam quis libero vehicula maximus. </p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="timeline-inverted">
-                                <div class="tl-circ">
-                                    <i class="fa fa-dot-circle-o"></i>
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="tl-heading">
-                                        <h4>Our first date</h4>
-                                        <span>August 23th 2015</span>
-                                    </div>
-                                    <div class="tl-body">
-                                        <p>Curabitur rutrum quis dolor vitae ultricies. Aenean condimentum massa quis justo commodo auctor. Fusce feugiat lacinia massa, eu dapibus nisl porttitor eu. Nullam vel nunc ut mauris fringilla ullamcorper.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="tl-circ">
-                                    <i class="fa fa-dot-circle-o"></i>
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="tl-heading">
-                                        <h4>We live together</h4>
-                                        <span>October 30th 2015</span>
-                                    </div>
-                                    <div class="tl-body">
-                                        <p>Integer sed felis massa. Mauris pretium nibh sed placerat gravida. Duis malesuada eu odio tristique facilisis. Pellentesque blandit diam quis libero vehicula maximus.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="timeline-inverted">
-                                <div class="tl-circ">
-                                    <i class="fa fa-dot-circle-o"></i>
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="tl-heading">
-                                        <h4>He proposed...and she said yes :)</h4>
-                                        <span>November 10th 2015</span>
-                                    </div>
-                                    <div class="tl-body">
-                                        <p>Curabitur rutrum quis dolor vitae ultricies. Aenean condimentum massa quis justo commodo auctor. Fusce feugiat lacinia massa, eu dapibus nisl porttitor eu. Nullam vel nunc ut mauris fringilla ullamcorper.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- People Involved Section -->
         <section id="people">
             <div class="container">
@@ -351,72 +352,6 @@
             </div>
         </section>
 
-        <!-- Groomsmen Section -->
-        <section id="groomsmen">
-            <div class="container">
-                <div class="row">
-                    <h1>Groomsmen</h1>
-                    <div class="hr mb-50"></div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/groomsmen-1.jpg" data-rel="lightcase:mw-groomsmen" class="people-item">
-                            <img src="images/groomsmen-1.jpg" alt="Chris Edisson">
-                            <div class="description">
-							    <h2>Chris Edisson</h2>
-                                <span>Best man</span>
-							</div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/groomsmen-2.jpg" data-rel="lightcase:mw-groomsmen" class="people-item">
-                            <img src="images/groomsmen-2.jpg" alt="Thomas Witz">
-                            <div class="description">
-							    <h2>Thomas Witz</h2>
-                                <span>Brother</span>
-							</div>
-						</a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/groomsmen-3.jpg" data-rel="lightcase:mw-groomsmen" class="people-item">
-                            <img src="images/groomsmen-3.jpg" alt="Eddy Smith">
-                            <div class="description">
-							    <h2>Eddy Smith</h2>
-                                <span>Best friend</span>
-							</div>
-						</a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/groomsmen-4.jpg" data-rel="lightcase:mw-groomsmen" class="people-item">
-                            <img src="images/groomsmen-4.jpg" alt="Sam Rockford">
-                            <div class="description">
-							    <h2>Sam Rockford</h2>
-                                <span>College best friend</span>
-							</div>
-						</a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/groomsmen-5.jpg" data-rel="lightcase:mw-groomsmen" class="people-item">
-                            <img src="images/groomsmen-5.jpg" alt="Erick Matt">
-                            <div class="description">
-							    <h2>Erick Matt</h2>
-                                <span>Bride's rother</span>
-							</div>
-						</a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/groomsmen-6.jpg" data-rel="lightcase:mw-groomsmen" class="people-item">
-                            <img src="images/groomsmen-6.jpg" alt="Chang Sung">
-                            <div class="description">
-							    <h2>Chang Sung</h2>
-                                <span>Room mate</span>
-							</div>
-						</a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
         <!-- Love quote Section -->
         <section>
 
@@ -424,72 +359,6 @@
                 <h1>To love someone deeply gives you strength.<br/>Being loved by someone deeply gives you courage.</h1>
             </div>
 
-        </section>
-
-        <!-- Bridesmaid Section -->
-        <section id="bridesmaid">
-            <div class="container">
-                <div class="row">
-                    <h1>Bridesmaid</h1>
-                    <div class="hr mb-50"></div>
-
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/bridesmaid-1.jpg" data-rel="lightcase:mw-bridesmaid" class="people-item">
-                            <img src="images/bridesmaid-1.jpg" alt="Eva Hudson">
-                            <div class="description">
-							    <h2>Eva Hudson</h2>
-                                <span>Maid of honor</span>
-							</div>
-                        </a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/bridesmaid-2.jpg" data-rel="lightcase:mw-bridesmaid" class="people-item">
-                            <img src="images/bridesmaid-2.jpg" alt="Francesca Shulz">
-                            <div class="description">
-							    <h2>Francesca Shulz</h2>
-                                <span>Bride's sister</span>
-							</div>
-						</a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/bridesmaid-3.jpg" data-rel="lightcase:mw-bridesmaid" class="people-item">
-                            <img src="images/bridesmaid-3.jpg" alt="Teressa Ericsson">
-                            <div class="description">
-							    <h2>Teressa Ericsson</h2>
-                                <span>Best friend</span>
-							</div>
-						</a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/bridesmaid-4.jpg" data-rel="lightcase:mw-bridesmaid" class="people-item">
-                            <img src="images/bridesmaid-4.jpg" alt="Petra Forest">
-                            <div class="description">
-							    <h2>Petra Forest</h2>
-                                <span>College best friend</span>
-							</div>
-						</a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/bridesmaid-5.jpg" data-rel="lightcase:mw-bridesmaid" class="people-item">
-                            <img src="images/bridesmaid-5.jpg" alt="Sindy Roberts">
-                            <div class="description">
-							    <h2>Sindy Roberts</h2>
-                                <span>Bride's rother</span>
-							</div>
-						</a>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <a href="images/bridesmaid-6.jpg" data-rel="lightcase:mw-bridesmaid" class="people-item">
-                            <img src="images/bridesmaid-6.jpg" alt="Jessica Fauna">
-                            <div class="description">
-							    <h2>Jessica Fauna</h2>
-                                <span>Room mate</span>
-							</div>
-						</a>
-                    </div>
-
-                </div>
-            </div>
         </section>
 
         <!-- The Wedding Section -->
@@ -503,10 +372,6 @@
                         <p class="text-center">
                             Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor. Ut in volutpat enim. Sed pharetra eget neque eu ornare. Suspendisse a metus sodales, convallis ante non, lobortis quam. Donec congue sapien odio, eu aliquam erat interdum nec.
                         </p>
-                    </div>
-                    <div class="col-md-12">
-                        <!-- Countdown -->
-                        <div class="countdown mt-30 mb-40" data-countdown="2017/07/07"></div>
                     </div>
                 </div>
             </div>
@@ -785,11 +650,10 @@
 
         <!-- Footer Section -->
         <footer>
-            <p>
-                © 2017 | Deborah & Richard Wedding | By <a href="http://figothemes.com" target="_blank">FigoThemes</a>
-            </p>
-			<div id="soundtrack" style="display:none">
-			</div>
+          <p>
+              © 2017 | Deborah & Richard Wedding | By <a href="http://figothemes.com" target="_blank">FigoThemes</a>
+          </p>
+          <div id="soundtrack" style="display:none"></div>
         </footer>
 		<script type="text/javascript">
 			function play()
