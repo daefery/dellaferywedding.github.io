@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="wedding">
     <head>
     <!-- Meta, title, CSS, favicon, etc. -->
     <meta charset="utf-8">
@@ -36,7 +36,7 @@
     <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
     </head>
 
-    <body onload="play()">
+    <body onload="play()" ng-controller="WeddingController">
 
         <!-- Page Preloader -->
 		<div id="preloader"></div>
@@ -48,7 +48,7 @@
                     <div class="col-md-6">
                         <div class="title">
                             <img src="images/logo.png" alt="" />
-                            <h1>Fery & Della</h1>
+                            <h1>{{wedding_name}}</h1>
                             <p>Request the honour of your presence at their marriage</p>
                             <span class="date">July / 7th / 2017</span>
                         </div>
@@ -677,6 +677,10 @@
         <!-- JavaScript Files -->
         <!-- jQuery -->
     	<script src="js/jquery-1.11.3.min.js"></script>
+        <!-- angularjs -->
+      <script src="js/angular.min.js"></script>
+      <script src="js/angular-route.min.js"></script>
+      <script src="app/App.js"></script>
         <!-- Device.js -->
     	<script src="js/device.min.js"></script>
         <!-- Bootstrap -->

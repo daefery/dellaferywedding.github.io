@@ -108,6 +108,22 @@ $(document).ready(function() {
 	    });
 	}
 
+  if ( $('#owl-guest').length > 0 ) {
+		$("#owl-guest").owlCarousel({
+	        autoPlay: 4000,
+	        stopOnHover : true,
+	        navigation : false,
+	        itemsCustom : [
+	            [320, 1],
+	            [480, 1],
+	            [768, 2],
+	            [992, 4],
+	            [1200, 4]
+	        ],
+	        pagination : true
+	    });
+	}
+
     // 06. Parallax effects
     if( !device.tablet() && !device.mobile() && $('#parallax-quote').lenght > 0 ) {
         $('#parallax-quote').parallax("50%", 0.2);
@@ -212,14 +228,14 @@ $(document).ready(function() {
                 $('#bad-msg').fadeIn("slow");
             }
         });
-        $('#show-form').on('click', function() {
-            $('.form-fields').fadeIn();
-            $('#submitinput').fadeIn();
-        });
-        $('#hide-form').on('click', function() {
-            $('.form-fields').fadeOut();
-            $('#submitinput').fadeOut();
-        });
+        // $('#show-form').on('click', function() {
+        //     $('.form-fields').fadeIn();
+        //     $('#submitinput').fadeIn();
+        // });
+        // $('#hide-form').on('click', function() {
+        //     $('.form-fields').fadeOut();
+        //     $('#submitinput').fadeOut();
+        // });
     }
 
     // 13. Google Maps with markers
