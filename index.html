@@ -36,7 +36,8 @@
     <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
     </head>
 
-    <body onload="play()" ng-controller="WeddingController">
+    <!-- <body onload="play()" ng-controller="WeddingController"> -->
+    <body ng-controller="WeddingController">
 
         <!-- Page Preloader -->
 		<div id="preloader"></div>
@@ -449,31 +450,36 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="text" id="nameinput" ng-model="form.name" name="name" value="">
+                                    <input type="text" id="nameinput" ng-model="form.name" name="name" value=""
+                                    ng-init="name_focused = false" ng-focus="name_focused = true" ng-blur="name_focused = false">
                                     <span class="bar"></span>
-                                    <label class="text-label">Name *</label>
+                                    <label class="text-label" ng-class="{active:name_focused}">Name *</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="text" id="emailinput" ng-model="form.email" name="email" value="">
+                                    <input type="text" id="emailinput" ng-model="form.email" name="email" value=""
+                                    ng-init="email_focused = false" ng-focus="email_focused = true" ng-blur="email_focused = false">
                                     <span class="bar"></span>
-                                    <label class="text-label">E-mail *</label>
+                                    <label class="text-label" ng-class="{active:email_focused}">E-mail *</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="text"  id="phoneinput" ng-model="form.phone" name="phone" value="">
+                                    <input type="text"  id="phoneinput" ng-model="form.phone" name="phone" value=""
+                                    ng-init="phone_focused = false" ng-focus="phone_focused = true" ng-blur="phone_focused = false">
                                     <span class="bar"></span>
-                                    <label class="text-label">Phone *</label>
+                                    <label class="text-label" ng-class="{active:phone_focused}">Phone *</label>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input type="text"  id="noteinput" ng-model="form.message" name="note" value="">
+                                    <textarea id="noteinput" ng-model="form.message" name="note"
+                                    ng-init="focused = false" ng-focus="focused = true" ng-blur="focused = false"></textarea>
+                                    <!-- <input type="text"  id="noteinput" ng-model="form.message" name="note" value=""> -->
                                     <span class="bar"></span>
-                                    <label class="text-label">Leave us a message</label>
+                                    <label class="text-label" ng-class="{active:focused}">Leave us a message</label>
                                 </div>
                             </div>
                         </div>

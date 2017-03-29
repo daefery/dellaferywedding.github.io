@@ -202,18 +202,6 @@ $(document).ready(function() {
 	    });
 	}
 
-    // 11. Material Inputs Fields
-    $('#contact input').on('focus', function() {
-        $(this).siblings('.text-label').addClass('active');
-    });
-    $('#contact input').on('blur', function() {
-        if( $(this).val() == '' ) {
-              $(this).siblings('.text-label').removeClass('active');
-        } else {
-              $(this).siblings('.text-label').addClass('active');
-        }
-    });
-
     // 12. RSVP Form
     if ( $('#contact').length > 0 ) {
         $('#contact').ajaxForm(function(data) {
