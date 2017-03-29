@@ -37,13 +37,13 @@
     </head>
 
     <!-- <body onload="play()" ng-controller="WeddingController"> -->
-    <body ng-controller="WeddingController">
+    <body>
 
         <!-- Page Preloader -->
 		<div id="preloader"></div>
 
         <!-- Image Header -->
-        <div id="header" class="image-header">
+        <div id="header" class="image-header" ng-controller="HomeController">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
@@ -83,7 +83,7 @@
         <div class="keep"></div>
 
         <!-- Love Story Section -->
-        <section id="love-story">
+        <section id="love-story" ng-controller="StoryController">
             <div class="container">
 
                 <div class="row">
@@ -205,7 +205,7 @@
         </section>
 
         <!-- Gallery -->
-        <section id="gallery">
+        <section id="gallery" ng-controller="GalleryController">
             <div class="container">
                 <div class="row">
                     <h1>Gallery</h1>
@@ -234,7 +234,7 @@
         </section>
 
         <!-- People Involved Section -->
-        <section id="people">
+        <section id="people" ng-controller="PeopleController">
             <div class="container">
                 <div class="row">
                     <h1>People Involved</h1>
@@ -299,7 +299,7 @@
         </section>
 
         <!-- Events Section -->
-        <section id="events">
+        <section id="events" ng-controller="EventController">
             <div class="container">
                 <div class="row">
                   <div class="col-md-4 col-sm-4 col-xs-12" ng-repeat="sch in agenda">
@@ -318,7 +318,7 @@
         </section>
 
         <!-- Accommodation Section -->
-        <section id="accommodation">
+        <section id="accommodation" ng-controller="AccommodationController">
             <div class="container">
                 <div class="row">
                     <h1>Accommodation</h1>
@@ -393,56 +393,19 @@
         </section>
 
         <!-- RSVP -->
-        <section id="rsvp">
+        <section id="rsvp" ng-controller="RsvpController">
             <div class="container">
                 <div class="row">
                     <h1>Are you attending our wedding?</h1>
                     <div class="hr"></div>
-                    <div class="row">
-                      <div id="owl-guest" class="owl-carousel owl-theme mt-30">
-                        <div class="event-item" ng-repeat="gs in guest" style="float: left;
-                            background: #f5f5f5;
-                            padding: 20px;
-                            position: relative;
-                            min-height: 280px;
-                            margin:3px;">
-
-                          <h2 style="font-size: 20px;"></h2>
-                          <b ng-if="!gs.attend" data-toggle="tooltip" data-placement="left" title="Can't Attend" class="round-button white" style="color: #fff;
-                          background-color: #ad1414;
-                          left: 23px;bottom: 12px;">
-                              <i class="fa fa-calendar-times-o"></i>
-                          </b>
-                          <b ng-if="gs.attend" data-toggle="tooltip" data-placement="left" title="Attending" class="round-button white" style="color: #fff;
-                          background-color: #14ad4a;
-                          left: 23px;bottom: 12px;">
-                              <i class="fa fa-calendar-check-o"></i>
-                          </b>
-                          <!-- <p style="text-align:justify">{{gs.message}}</p> -->
-                          <blockquote>
-                            {{gs.message}}
-                            <cite>{{gs.name}}</cite>
-                          </blockquote>
-
-
-                        </div>
-                      </div>
-
-                        <!-- <div class="col-lg-2 col-sm-4 col-xs-6" ng-repeat="sch in agenda">
-                            <div class="event-item">
-                                <h2>{{sch.type}}</h2>
-                                <p>{{sch.description}}</p>
-
-                            </div>
-                        </div> -->
-                    </div>
+                    
                     <form class="mt-20 mb-50" name="guestForm">
 
                         <div class="form-group attending">
-                            <input class="radio-input" type="radio" ng-checked="true" id="show-form" ng-value="true" name="attending" ng-model="form.status" checked/>
+                            <input class="radio-input" type="radio" ng-checked="true" id="show-form" ng-value="true" name="attending" ng-model="form.attend" checked/>
                             <label class="radio-label" for="show-form">Yes, I am attending</label>
 
-                            <input class="radio-input" type="radio" ng-value="false" id="hide-form" name="attending" ng-model="form.status" />
+                            <input class="radio-input" type="radio" ng-value="false" id="hide-form" name="attending" ng-model="form.attend" />
                             <label class="radio-label" for="hide-form">Sorry, I can’t attend</label>
                         </div>
 
@@ -450,36 +413,32 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="text" id="nameinput" ng-model="form.name" name="name" value=""
-                                    ng-init="name_focused = false" ng-focus="name_focused = true" ng-blur="name_focused = false">
+                                    <input type="text" id="nameinput" ng-model="form.name" name="name" value="">
                                     <span class="bar"></span>
-                                    <label class="text-label" ng-class="{active:name_focused}">Name *</label>
+                                    <label class="text-label">Name *</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="text" id="emailinput" ng-model="form.email" name="email" value=""
-                                    ng-init="email_focused = false" ng-focus="email_focused = true" ng-blur="email_focused = false">
+                                    <input type="text" id="emailinput" ng-model="form.email" name="email" value="">
                                     <span class="bar"></span>
-                                    <label class="text-label" ng-class="{active:email_focused}">E-mail *</label>
+                                    <label class="text-label">E-mail *</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="text"  id="phoneinput" ng-model="form.phone" name="phone" value=""
-                                    ng-init="phone_focused = false" ng-focus="phone_focused = true" ng-blur="phone_focused = false">
+                                    <input type="text"  id="phoneinput" ng-model="form.phone" name="phone" value="">
                                     <span class="bar"></span>
-                                    <label class="text-label" ng-class="{active:phone_focused}">Phone *</label>
+                                    <label class="text-label">Phone *</label>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea id="noteinput" ng-model="form.message" name="note"
-                                    ng-init="focused = false" ng-focus="focused = true" ng-blur="focused = false"></textarea>
+                                    <textarea id="noteinput" value="" ng-model="form.message" name="note"></textarea>
                                     <!-- <input type="text"  id="noteinput" ng-model="form.message" name="note" value=""> -->
                                     <span class="bar"></span>
-                                    <label class="text-label" ng-class="{active:focused}">Leave us a message</label>
+                                    <label class="text-label">Leave us a message</label>
                                 </div>
                             </div>
                         </div>
@@ -497,7 +456,7 @@
                         </div>
                         <!-- Submit Button -->
                         <!-- <input type="submit" id="submitinput" ng-click="Attend(form)" name="submit" class="submit button lila" value="Submit"/> -->
-                        <button class="submit button lila" type="submit" ng-click="Attend(form)" id="submitinput" ng-disabled="submitButtonText==''">
+                        <button class="submit button lila" type="submit" ng-click="save(form)" id="submitinput" ng-disabled="submitButtonText==''">
                           <div class="spinner" ng-show="submitButtonText == ''">
                             <div class="bounce1"></div>
                             <div class="bounce2"></div>
@@ -506,6 +465,44 @@
                           {{ submitButtonText }}
                         </button>
                     </form>
+
+                    <div class="row">
+                    <div class="col-md-8 col-centered text-center mt-50">
+                        <h3>Thank you for your wish</h3>
+                        <p class="text-center">
+                            Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor. Ut in volutpat enim. Sed pharetra eget neque eu ornare. Suspendisse a metus sodales, convallis ante non, lobortis quam congue sapien odio.
+                        </p>
+                    </div>
+                </div>
+                    <div class="row">
+                    <!-- <h1 ng-repeat="gst in guest">{{gst.name}}</h1> -->
+                      <div id="owl-guest" class="owl-carousel owl-theme mt-30">
+                        <div class="event-item" ng-repeat="gst in guest" style="float: left;
+                            background: #f5f5f5;
+                            padding: 20px;
+                            position: relative;
+                            min-height: 280px;
+                            margin:3px;">
+
+                          <h2 style="font-size: 20px;"></h2>
+                          <b ng-if="gst.attend == 'false'" data-toggle="tooltip" data-placement="left" title="Can't Attend" class="round-button white" style="color: #fff;
+                          background-color: #ad1414;
+                          left: 23px;bottom: 12px;">
+                              <i class="fa fa-calendar-times-o"></i>
+                          </b>
+                          <b ng-if="gst.attend == 'true'" data-toggle="tooltip" data-placement="left" title="Attending" class="round-button white" style="color: #fff;
+                          background-color: #14ad4a;
+                          left: 23px;bottom: 12px;">
+                              <i class="fa fa-calendar-check-o"></i>
+                          </b>
+                          <blockquote>
+                            {{gst.message}}
+                            <cite>{{gst.name}}</cite>
+                          </blockquote>
+                        </div>
+                      </div>
+
+                    </div>
                 </div>
             </div>
         </section>
@@ -564,7 +561,25 @@
     	<script src="js/scripts.js"></script>
       <script>
         $(document).ready(function(){
+            
+            setTimeout(function(){
             $('[data-toggle="tooltip"]').tooltip();
+              if ( $('#owl-guest').length > 0 ) {
+                $("#owl-guest").owlCarousel({
+                    autoPlay: 4000,
+                    stopOnHover : true,
+                    navigation : false,
+                    itemsCustom : [
+                        [320, 1],
+                        [480, 1],
+                        [768, 2],
+                        [992, 4],
+                        [1200, 4]
+                    ],
+                    pagination : true
+                });
+            }
+        }, 1000);
         });
       </script>
     </body>

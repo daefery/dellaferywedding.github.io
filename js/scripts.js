@@ -107,22 +107,24 @@ $(document).ready(function() {
 	        pagination : true
 	    });
 	}
+// setTimeout(function(){
+//       if ( $('#owl-guest').length > 0 ) {
+//         $("#owl-guest").owlCarousel({
+//             autoPlay: 4000,
+//             stopOnHover : true,
+//             navigation : false,
+//             itemsCustom : [
+//                 [320, 1],
+//                 [480, 1],
+//                 [768, 2],
+//                 [992, 4],
+//                 [1200, 4]
+//             ],
+//             pagination : true
+//         });
+//     }
+// }, 2000);
 
-  if ( $('#owl-guest').length > 0 ) {
-		$("#owl-guest").owlCarousel({
-	        autoPlay: 4000,
-	        stopOnHover : true,
-	        navigation : false,
-	        itemsCustom : [
-	            [320, 1],
-	            [480, 1],
-	            [768, 2],
-	            [992, 4],
-	            [1200, 4]
-	        ],
-	        pagination : true
-	    });
-	}
 
     // 06. Parallax effects
     if( !device.tablet() && !device.mobile() && $('#parallax-quote').lenght > 0 ) {
@@ -201,6 +203,28 @@ $(document).ready(function() {
 	        });
 	    });
 	}
+
+    $('#contact input').on('focus', function() {
+        $(this).siblings('.text-label').addClass('active');
+    });
+    $('#contact input').on('blur', function() {
+        if( $(this).val() == '' ) {
+              $(this).siblings('.text-label').removeClass('active');
+        } else {
+              $(this).siblings('.text-label').addClass('active');
+        }
+    });
+
+    $('#contact textarea').on('focus', function() {
+        $(this).siblings('.text-label').addClass('active');
+    });
+    $('#contact textarea').on('blur', function() {
+        if( $(this).val() == '' ) {
+              $(this).siblings('.text-label').removeClass('active');
+        } else {
+              $(this).siblings('.text-label').addClass('active');
+        }
+    });
 
     // 12. RSVP Form
     if ( $('#contact').length > 0 ) {
