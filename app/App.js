@@ -72,21 +72,21 @@ app.controller('EventController', function($scope){
   $scope.agenda =
         [
           {
-            image:'images/ceremony-image.jpg',
-            type:'Ceremony',
-            time:'16:30 - 17:15',
+            image:'images/masjid.jpg',
+            type:'Ijab Qobul',
+            time:'8:00 - 10:00',
             description:'Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor.'
           },
+          // {
+          //   image:'images/restaurant-image.jpg',
+          //   type:'Restaurant',
+          //   time:'17:30 - 23:00',
+          //   description:'Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor.'
+          // },
           {
-            image:'images/restaurant-image.jpg',
-            type:'Restaurant',
-            time:'17:30 - 23:00',
-            description:'Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor.'
-          },
-          {
-            image:'images/party-image.jpg',
-            type:'Party',
-            time:'23:30 - 06:00',
+            image:'images/hotel.jpg',
+            type:'Walimah',
+            time:'20:00 - 22:00',
             description:'Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor.'
           }
         ];

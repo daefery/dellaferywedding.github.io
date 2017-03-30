@@ -38,7 +38,10 @@
 
     <!-- <body onload="play()" ng-controller="WeddingController"> -->
     <body>
-
+        <canvas id="canvas" style="position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: -1;"></canvas>
         <!-- Page Preloader -->
 		<div id="preloader"></div>
 
@@ -282,13 +285,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6">
-                            <span class="time">16:00</span>
+                            <span class="time">7:00</span>
                         </div>
                         <div class="col-sm-6">
-                            <h2>Cathedral Church</h2>
-                            <span class="date">August 25th 2016</span>
+                            <h2>Ijab Qobul</h2>
+                            <span class="date">July 7th 2017</span>
                         </div>
-                        <a href="https://google.com/maps/" class="round-button lila" target="_blank">
+                        <a href="" class="round-button lila">
                             <i class="fa fa-map-marker"></i>
                         </a>
                     </div>
@@ -301,8 +304,8 @@
         <section id="events" ng-controller="EventController">
             <div class="container">
                 <div class="row">
-                  <div class="col-md-4 col-sm-4 col-xs-12" ng-repeat="sch in agenda">
-                      <div class="event-item">
+                  <div class="col-md-6 col-sm-6 col-xs-12" ng-repeat="sch in agenda">
+                      <div class="event-item" style="height: 100%;">
                           <h2>{{sch.type}}</h2>
                           <span>{{sch.time}}</span>
                           <p>{{sch.description}}</p>
@@ -402,11 +405,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                   <select ng-model="form.relation" id="sel1" required>
-                                    <option value="Della's Friends">Della's Friends</option>
-                                    <option value="Fery's Friends">Fery's Friends</option>
-                                    <option value="Both Friend">Both Friend</option>
-                                    <option value="Della's Family">Della's Family</option>
-                                    <option value="Fery's Family">Fery's Family</option>
+                                    <option value="friends of della">Della's Friends</option>
+                                    <option value="friends of fery">Fery's Friends</option>
+                                    <option value="friends of both">Friend of both</option>
+                                    <option value="della's family">Della's Family</option>
+                                    <option value="fery's family">Fery's Family</option>
                                     <option value="other">Other</option>
                                   </select>
                                     <span class="bar"></span>
@@ -513,23 +516,24 @@
         $(document).ready(function(){
 
             setTimeout(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-              if ( $('#owl-guest').length > 0 ) {
-                $("#owl-guest").owlCarousel({
-                    autoPlay: 4000,
-                    stopOnHover : true,
-                    navigation : false,
-                    itemsCustom : [
-                        [320, 1],
-                        [480, 1],
-                        [768, 2],
-                        [992, 4],
-                        [1200, 4]
-                    ],
-                    pagination : true
-                });
-            }
-        }, 1000);
+                $('[data-toggle="tooltip"]').tooltip();
+                  if ( $('#owl-guest').length > 0 ) {
+                    $("#owl-guest").owlCarousel({
+                        autoPlay: 4000,
+                        stopOnHover : true,
+                        navigation : false,
+                        itemsCustom : [
+                            [320, 1],
+                            [480, 1],
+                            [768, 2],
+                            [992, 4],
+                            [1200, 4]
+                        ],
+                        pagination : true
+                    });
+                }
+            }, 1000);   
+            
         });
       </script>
     </body>

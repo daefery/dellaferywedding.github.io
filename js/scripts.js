@@ -265,15 +265,14 @@ $(document).ready(function() {
     google.maps.event.addDomListener(window, 'load', init);
     function init() {
         // Basic options for a simple Google Map
-        var image1 = 'images/wedding-pin.png';
-        var image2 = 'images/party-pin.png';
-        var image3 = 'images/restaurant-pin.png';
+        var image1 = 'images/mosquee.png';
+        var image2 = 'images/lodging.png';
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
         var mapOptions = {
             // How zoomed in you want the map to start at (always required)
             zoom: 15,
             // The latitude and longitude to center the map (always required)
-            center: new google.maps.LatLng(-8.2192335, 114.36922670000001), // New York
+            center: new google.maps.LatLng(-8.2093901,114.3706426), // New York
             scrollwheel: false,
             zoomControl: false,
             // How you would like to style the map.
@@ -287,23 +286,40 @@ $(document).ready(function() {
         var map = new google.maps.Map(mapElement, mapOptions);
         // Let's also add a markers while we're at it
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(-8.2185906,114.3687796),
+            position: new google.maps.LatLng(-8.2093901,114.3706426),
             map: map,
             title: 'Wedding',
             icon: image1
         });
         var marker2 = new google.maps.Marker({
-            position: new google.maps.LatLng(-8.2239742,114.367535),
+            position: new google.maps.LatLng(-8.205463,114.353666),
             map: map,
             title: 'Party',
             icon: image2
         });
-        var marker3 = new google.maps.Marker({
-            position: new google.maps.LatLng(-8.2205869,114.3686616),
-            map: map,
-            title: 'Restaurant',
-            icon: image3
+        var iw = new google.maps.InfoWindow({
+            content: "<h5>Masjid Agung Baiturrahman</h5>"+
+            "<i>Kepatihan, Banyuwangi Sub-District, Banyuwangi Regency, East Java 68411</i><br>"+
+            "<a href='https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313' target='_blank'>go to map</a>"
         });
+        var iw2 = new google.maps.InfoWindow({
+            content: "<h5>Hotel Tanjung Asri</h5>"+
+            "<i>Jalan Mawar No. 8-10, Penataban, Mojopanggung, Giri, Kabupaten Banyuwangi, Jawa Timur 68418</i><br>"+
+            "<i>phone : (0333) 421786</i><br>"+
+            "<a href='https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313' target='_blank'>go to map</a>"
+        });
+        google.maps.event.addListener(marker, "click", function(e) {
+            iw.open(map, this);
+        });
+        google.maps.event.addListener(marker2, "click", function(e) {
+            iw2.open(map, this);
+        });
+        // var marker3 = new google.maps.Marker({
+        //     position: new google.maps.LatLng(-8.2205869,114.3686616),
+        //     map: map,
+        //     title: 'Restaurant',
+        //     icon: image3
+        // });
     }
 
     // 14. YouTUBE Video Header
@@ -315,4 +331,69 @@ $(document).ready(function() {
            //blur: 5
         });
     }
+
+    var HeartsBackground = {
+      heartHeight: 60,
+      heartWidth: 64,
+      hearts: [],
+      heartImage: 'images/heart.png',
+      maxHearts: 8,
+      minScale: 0.4,
+      draw: function() {
+        this.setCanvasSize();
+        this.ctx.clearRect(0, 0, this.w, this.h);
+        for (var i = 0; i < this.hearts.length; i++) {
+          var heart = this.hearts[i];
+          heart.image = new Image();
+          heart.image.style.height = heart.height;
+          heart.image.src = this.heartImage;
+          this.ctx.globalAlpha = heart.opacity;
+          this.ctx.drawImage (heart.image, heart.x, heart.y, heart.width, heart.height);
+        }
+        this.move();
+      },
+      move: function() {
+        for(var b = 0; b < this.hearts.length; b++) {
+          var heart = this.hearts[b];
+          heart.y += heart.ys;
+          if(heart.y > this.h) {
+            heart.x = Math.random() * this.w;
+            heart.y = -1 * this.heartHeight;
+          }
+        }
+      },
+      setCanvasSize: function() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.w = this.canvas.width;
+        this.h = this.canvas.height;
+      },
+      initialize: function() {
+        this.canvas = $('#canvas')[0];
+
+        if(!this.canvas.getContext)
+          return;
+
+        this.setCanvasSize();
+        this.ctx = this.canvas.getContext('2d');
+
+        for(var a = 0; a < this.maxHearts; a++) {
+          var scale = (Math.random() * (1 - this.minScale)) + this.minScale;
+          this.hearts.push({
+            x: Math.random() * this.w,
+            y: Math.random() * this.h,
+            ys: Math.random() + 1,
+            height: scale * this.heartHeight,
+            width: scale * this.heartWidth,
+            opacity: scale
+          });
+        }
+
+        setInterval($.proxy(this.draw, this), 30);
+      }
+    };
+
+    $(document).ready(function(){
+      HeartsBackground.initialize();
+    });
 });
