@@ -226,6 +226,17 @@ $(document).ready(function() {
         }
     });
 
+    $('#contact select').on('focus', function() {
+        $(this).siblings('.text-label').addClass('active');
+    });
+    $('#contact select').on('blur', function() {
+        if( $(this).val() == '' ) {
+              $(this).siblings('.text-label').removeClass('active');
+        } else {
+              $(this).siblings('.text-label').addClass('active');
+        }
+    });
+
     // 12. RSVP Form
     if ( $('#contact').length > 0 ) {
         $('#contact').ajaxForm(function(data) {
@@ -260,9 +271,9 @@ $(document).ready(function() {
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
         var mapOptions = {
             // How zoomed in you want the map to start at (always required)
-            zoom: 11,
+            zoom: 15,
             // The latitude and longitude to center the map (always required)
-            center: new google.maps.LatLng(40.6700, -73.9400), // New York
+            center: new google.maps.LatLng(-8.2192335, 114.36922670000001), // New York
             scrollwheel: false,
             zoomControl: false,
             // How you would like to style the map.
@@ -276,19 +287,19 @@ $(document).ready(function() {
         var map = new google.maps.Map(mapElement, mapOptions);
         // Let's also add a markers while we're at it
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(40.6500, -73.9100),
+            position: new google.maps.LatLng(-8.2185906,114.3687796),
             map: map,
             title: 'Wedding',
             icon: image1
         });
         var marker2 = new google.maps.Marker({
-            position: new google.maps.LatLng(40.6700, -73.9900),
+            position: new google.maps.LatLng(-8.2239742,114.367535),
             map: map,
             title: 'Party',
             icon: image2
         });
         var marker3 = new google.maps.Marker({
-            position: new google.maps.LatLng(40.6800, -73.8400),
+            position: new google.maps.LatLng(-8.2205869,114.3686616),
             map: map,
             title: 'Restaurant',
             icon: image3

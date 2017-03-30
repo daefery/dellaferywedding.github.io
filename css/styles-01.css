@@ -112,6 +112,7 @@ Sections:
 a,
 img,
 textarea,
+select,
 input,
 button {
   -webkit-transition: all .2s linear;
@@ -1302,6 +1303,18 @@ input[type=text] {
 input[type=text]:focus {
   outline: none;
 }
+input[type=email] {
+  font-size: 16px;
+  font-weight: 300;
+  padding: 10px 10px 10px 0;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+}
+input[type=email]:focus {
+  outline: none;
+}
 textarea {
   font-size: 16px !important;
   font-weight: 300 !important;
@@ -1312,6 +1325,18 @@ textarea {
   border-bottom: 1px solid #bdbdbd !important;
 }
 textarea:focus {
+  outline: none !important;
+}
+select {
+  font-size: 16px !important;
+  font-weight: 300 !important;
+  padding: 10px 10px 10px 0 !important;
+  display: block !important;
+  width: 100% !important;
+  border: none !important;
+  border-bottom: 1px solid #bdbdbd !important;
+}
+select:focus {
   outline: none !important;
 }
 .text-label {
@@ -1355,8 +1380,16 @@ input[type=text]:focus ~ .bar:before,
 input[type=text]:focus ~ .bar:after {
   width: 50%;
 }
+input[type=email]:focus ~ .bar:before,
+input[type=email]:focus ~ .bar:after {
+  width: 50%;
+}
 textarea:focus ~ .bar:before,
 textarea:focus ~ .bar:after {
+  width: 50% !important;
+}
+select:focus ~ .bar:before,
+select:focus ~ .bar:after {
   width: 50% !important;
 }
 /* --- 09. Header Video Background --- */
@@ -1449,22 +1482,40 @@ blockquote {
   font-size: 15px;
   font-style: italic;
   margin: 0.25em 0;
-  padding: 0.25em 40px;
+  padding: 10px;
+  /*padding: 0.25em 40px;*/
+  text-transform: lowercase;
   line-height: 1.45;
   position: relative;
   color: #383838;
   text-align: left;
 }
-blockquote cite {
+blockquote p{
+  padding: 0px !important;
+}
+cite.stat {
   color: #999999;
   font-size: 13px;
   display: block;
-  margin-top: 5px;
+  margin-top: 20px;
+  text-align: right;
 }
 
-blockquote cite:before {
+cite.head{
+  color: #ad1457;
+  font-size: 13px;
+  display: block;
+  margin-top: 5px;
+  font-style: normal;
+  text-transform: uppercase;
+}
+cite.stat:before{
   content: "\2014 \2009";
 }
+
+/*blockquote cite:before {
+  content: "\2014 \2009";
+}*/
 .spinner {
   /*margin: 100px auto 0;*/
   width: auto;

@@ -6,19 +6,16 @@ app.config(function($routeProvider) {
   $routeProvider
   .when('/', {
       templateUrl:'../index.html',
-      controller:'WeddingController'
     });
 
 });
 
 app.factory("apiService", function($http, $q, API_URL){
-  var url = API_URL+'guest';
-
+  var url = API_URL;
   return {
     getGuest: function() {
-      return $http.get(url).then(function(result) {
+      return $http.get(url+'guest').then(function(result) {
         var data = result.data;
-
         if (data == null){
            return $q.reject("Invalid data");
         }
@@ -37,7 +34,7 @@ app.controller('HomeController', function($scope, $http, $timeout, API_URL){
   $scope.bride_name = 'Della';
   $scope.groom_name = 'Fery';
   $scope.duedate = 'July / 7th / 2017';
-         
+
 });
 
 app.controller('StoryController', function($scope){
@@ -94,39 +91,34 @@ app.controller('EventController', function($scope){
           }
         ];
 });
-app.controller('AccommodationController', function($scope){
-  $scope.accommodation =
-          [
-            {
-              image:'images/hotel-1.jpg',
-              name:'Hotel Leonardo',
-              description:'Donec laoreet lacinia odio, quis elementum arcu efficitur in. Duis iaculis aliquam nisi sed pretium.'
-            },
-            {
-              image:'images/hotel-2.jpg',
-              name:'Hotel Aqua',
-              description:'Donec laoreet lacinia odio, quis elementum arcu efficitur in. Duis iaculis aliquam nisi sed pretium.'
-            },
-            {
-              image:'images/hotel-3.jpg',
-              name:'Hotel Vanguar',
-              description:'Donec laoreet lacinia odio, quis elementum arcu efficitur in. Duis iaculis aliquam nisi sed pretium.'
-            }
-          ];
+
+app.controller('GuestController', function($scope, $http, apiService){
+  apiService.getGuest()
+     .then(function(result){
+        $scope.guest = angular.copy(result); // actual reports data
+        console.log($scope.guest);
+      });
 });
 
 app.controller('RsvpController', function($scope, $http, $timeout, apiService, API_URL){
   $scope.form = {};
   $scope.submitButtonText = 'Submit';
-
-  apiService.getGuest()
-     .then(function(result){
-        $scope.guest = result; // actual reports data
-        console.log($scope.guest);
-     });
-
+  $scope.isSuccess = false;
+  $scope.isErrorForm = false;
+  $scope.submitted = false;
+  $scope.isError = false;
      //save new record / update existing record
-    $scope.save = function(param) {
+  $scope.save = function(form,param) {
+    $scope.submitted = true;
+    $scope.isSuccess = false;
+    $scope.isErrorForm = false;
+    $scope.isError = false;
+    if(form){
+      var parse = parseInt(param.phone);
+      var v_phone = isNaN(parse);
+      if(v_phone){
+        $scope.isErrorForm = true;
+      }else{
         $scope.submitButtonText = "";
         var url = API_URL + "guest";
         var data_guest = {
@@ -134,13 +126,14 @@ app.controller('RsvpController', function($scope, $http, $timeout, apiService, A
           name:param.name,
           email:param.email,
           phone:param.phone,
+          relation:(param.relation == 'other'?param.other:param.relation),
           message:param.message
         };
         //append employee id to the URL if the form is in edit mode
         // if (modalstate === 'edit'){
         //     url += "/" + id;
         // }
-        
+
         $http({
             method: 'POST',
             url: url,
@@ -150,13 +143,22 @@ app.controller('RsvpController', function($scope, $http, $timeout, apiService, A
             console.log(response);
             $scope.isSuccess = true;
             $scope.submitButtonText = "Submit";
-            // location.reload();
+            $scope.form = {};
+            $scope.form.attend = true;
         }).error(function(response) {
             console.log(response);
             $scope.submitButtonText = "Submit";
-            alert('This is embarassing. An error has occured. Please check the log for details');
+            $scope.isError = true;
+            $scope.msgError = 'This is embarassing. An error has occured. Please check the log for details';
+            $scope.form = {};
+            $scope.form.attend = true;
         });
+      }
+    }else{
+      $scope.isErrorForm = true;
     }
+}
+
 
     //delete record
     $scope.confirmDelete = function(id) {
@@ -179,4 +181,3 @@ app.controller('RsvpController', function($scope, $http, $timeout, apiService, A
         }
     }
 });
-

@@ -74,9 +74,8 @@
                   <li><a href="#gallery">Gallery</a></li>
                   <li><a href="#people">People</a></li>
                   <li><a href="#event-map">Location</a></li>
-                  <li><a href="#accommodation">Accommodation</a></li>
-                  <li><a href="#gifts">Gifts</a></li>
-                  <li><a href="#rsvp">RSVP</a></li>
+                  <li><a href="#wishes">Wishes</a></li>
+                  <li><a href="#invitation">Invitation</a></li>
                 </ul>
             </nav>
         </header>
@@ -317,89 +316,57 @@
             </div>
         </section>
 
-        <!-- Accommodation Section -->
-        <section id="accommodation" ng-controller="AccommodationController">
-            <div class="container">
-                <div class="row">
-                    <h1>Accommodation</h1>
-                    <div class="hr"></div>
-                    <div class="col-md-8 col-centered">
-                        <p class="text-center">
-                            Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor. Ut in volutpat enim. Sed pharetra eget neque eu ornare. Suspendisse a metus sodales, convallis ante non, lobortis quam. Donec congue sapien odio, eu aliquam erat interdum nec.
-                        </p>
-                    </div>
-                    <div class="col-sm-4 col-xs-12" ng-repeat="acm in accommodation">
-                        <div class="hotel-item">
-                            <img src="{{acm.image}}" alt="{{acm.name}}" />
-                            <div class="description">
-                                <h2>{{acm.name}}</h2>
-                                <span class="rating">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                </span>
-                                <p>{{scm.description}}</p>
-                            </div>
-                            <a href="#">Location <i class="fa fa-globe"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Gifts -->
-        <section id="gifts">
+        <section id="wishes" ng-controller="GuestController">
             <div class="container">
                 <div class="row">
-                    <h1>Gifts</h1>
+                    <h1>Wishes</h1>
                     <div class="hr"></div>
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="gift-item">
-                            <img src="images/gift-logo-1.png" alt="" />
-                            <a href="#">Shop</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="gift-item">
-                            <img src="images/gift-logo-2.png" alt="" />
-                            <a href="#">Shop</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="gift-item">
-                            <img src="images/gift-logo-3.png" alt="" />
-                            <a href="#">Shop</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-xs-6">
-                        <div class="gift-item">
-                            <img src="images/gift-logo-4.png" alt="" />
-                            <a href="#">Shop</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Vouchers -->
-                <div class="row">
                     <div class="col-md-8 col-centered text-center mt-50">
                         <h3>Buy us a voucher or make a donation</h3>
                         <p class="text-center">
                             Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor. Ut in volutpat enim. Sed pharetra eget neque eu ornare. Suspendisse a metus sodales, convallis ante non, lobortis quam congue sapien odio.
                         </p>
                     </div>
-                </div>
+                    <div id="owl-guest" class="owl-carousel owl-theme mt-30">
+                      <div class="event-item" ng-repeat="gst in guest" style="float: left;
+                          background: #f5f5f5;
+                          padding: 20px;
+                          position: relative;
+                          height: 100%;
+                          width:98%;
+                          margin:3px">
 
+                        <h2 style="font-size: 20px;"></h2>
+                        <b ng-if="gst.attend == 'false'" data-toggle="tooltip" data-placement="left" title="Can't Attend" class="round-button white" style="color: #fff;
+                        background-color: #ad1414;
+                        left: 35px;bottom: 10px;">
+                            <i class="fa fa-calendar-times-o"></i>
+                        </b>
+                        <b ng-if="gst.attend == 'true'" data-toggle="tooltip" data-placement="left" title="Attending" class="round-button white" style="color: #fff;
+                        background-color: #14ad4a;
+                        left: 35px;bottom: 10px;">
+                            <i class="fa fa-calendar-check-o"></i>
+                        </b>
+                        <blockquote>
+                          <cite class="head">{{gst.name}}</cite>
+                          <p>{{gst.message}}</p>
+                          <cite class="stat">{{gst.relation}}</cite>
+                        </blockquote>
+                      </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- RSVP -->
-        <section id="rsvp" ng-controller="RsvpController">
+        <section id="invitation" ng-controller="RsvpController">
             <div class="container">
                 <div class="row">
                     <h1>Are you attending our wedding?</h1>
                     <div class="hr"></div>
-                    
-                    <form class="mt-20 mb-50" name="guestForm">
+
+                    <form class="mt-20 mb-50" name="guestForm" novalidate>
 
                         <div class="form-group attending">
                             <input class="radio-input" type="radio" ng-checked="true" id="show-form" ng-value="true" name="attending" ng-model="form.attend" checked/>
@@ -413,50 +380,71 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="text" id="nameinput" ng-model="form.name" name="name" value="">
+                                    <input type="text" id="nameinput" maxlength="35" ng-model="form.name" name="name" value="" required>
                                     <span class="bar"></span>
                                     <label class="text-label">Name *</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="text" id="emailinput" ng-model="form.email" name="email" value="">
+                                    <input type="email" id="emailinput" maxlength="64" ng-model="form.email" name="email" value="" required>
                                     <span class="bar"></span>
                                     <label class="text-label">E-mail *</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="text"  id="phoneinput" ng-model="form.phone" name="phone" value="">
+                                    <input type="text" id="phoneinput" maxlength="15" ng-model="form.phone" name="phone" value="" required>
                                     <span class="bar"></span>
                                     <label class="text-label">Phone *</label>
                                 </div>
                             </div>
-
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                  <select ng-model="form.relation" id="sel1" required>
+                                    <option value="Della's Friends">Della's Friends</option>
+                                    <option value="Fery's Friends">Fery's Friends</option>
+                                    <option value="Both Friend">Both Friend</option>
+                                    <option value="Della's Family">Della's Family</option>
+                                    <option value="Fery's Family">Fery's Family</option>
+                                    <option value="other">Other</option>
+                                  </select>
+                                    <span class="bar"></span>
+                                    <label class="text-label">Relation *</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4" ng-show="form.relation == 'other'">
+                                <div class="form-group">
+                                    <input type="text"  id="otherinput" maxlength="20" ng-required="form.relation == 'other'" ng-model="form.other" name="other" value="">
+                                    <span class="bar"></span>
+                                    <label class="text-label">Other *</label>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea id="noteinput" value="" ng-model="form.message" name="note"></textarea>
-                                    <!-- <input type="text"  id="noteinput" ng-model="form.message" name="note" value=""> -->
+                                    <textarea id="noteinput" value="" ng-model="form.message" maxlength="250" name="note" required></textarea>
                                     <span class="bar"></span>
-                                    <label class="text-label">Leave us a message</label>
+                                    <i class="pull-right">{{250 - form.message.length}}</i>
+                                    <label class="text-label">Leave us a message *</label>
                                 </div>
                             </div>
                         </div>
                         <!-- Notifications -->
                         <div class="col-md-8 col-centered">
-                            <div id="bad-msg" class="alert alert-danger" ng-show="isRequired">
-                                Please, fill all the <strong>required</strong> * fields!
+                            <div id="bad-msg" class="alert alert-danger" ng-show="submitted && isErrorForm">
+                              Please, fill all the <strong>required</strong> * fields!
+                              <br>Please, check input format such as email or phone <strong>email@prov.ext / 081XXXXXXXXXX</strong>!
                             </div>
                             <div id="success" class="alert alert-success" ng-show="isSuccess">
                                 Your message has been sent!
                             </div>
                             <div id="bad-server" class="alert alert-danger" ng-show="isError">
-                                Server Error! Please, try again later.
+                                {{msgError}}
                             </div>
                         </div>
                         <!-- Submit Button -->
                         <!-- <input type="submit" id="submitinput" ng-click="Attend(form)" name="submit" class="submit button lila" value="Submit"/> -->
-                        <button class="submit button lila" type="submit" ng-click="save(form)" id="submitinput" ng-disabled="submitButtonText==''">
+                        <button class="submit button lila" type="submit" ng-click="save(guestForm.$valid,form)" id="submitinput" ng-disabled="submitButtonText==''">
                           <div class="spinner" ng-show="submitButtonText == ''">
                             <div class="bounce1"></div>
                             <div class="bounce2"></div>
@@ -465,44 +453,6 @@
                           {{ submitButtonText }}
                         </button>
                     </form>
-
-                    <div class="row">
-                    <div class="col-md-8 col-centered text-center mt-50">
-                        <h3>Thank you for your wish</h3>
-                        <p class="text-center">
-                            Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor. Ut in volutpat enim. Sed pharetra eget neque eu ornare. Suspendisse a metus sodales, convallis ante non, lobortis quam congue sapien odio.
-                        </p>
-                    </div>
-                </div>
-                    <div class="row">
-                    <!-- <h1 ng-repeat="gst in guest">{{gst.name}}</h1> -->
-                      <div id="owl-guest" class="owl-carousel owl-theme mt-30">
-                        <div class="event-item" ng-repeat="gst in guest" style="float: left;
-                            background: #f5f5f5;
-                            padding: 20px;
-                            position: relative;
-                            min-height: 280px;
-                            margin:3px;">
-
-                          <h2 style="font-size: 20px;"></h2>
-                          <b ng-if="gst.attend == 'false'" data-toggle="tooltip" data-placement="left" title="Can't Attend" class="round-button white" style="color: #fff;
-                          background-color: #ad1414;
-                          left: 23px;bottom: 12px;">
-                              <i class="fa fa-calendar-times-o"></i>
-                          </b>
-                          <b ng-if="gst.attend == 'true'" data-toggle="tooltip" data-placement="left" title="Attending" class="round-button white" style="color: #fff;
-                          background-color: #14ad4a;
-                          left: 23px;bottom: 12px;">
-                              <i class="fa fa-calendar-check-o"></i>
-                          </b>
-                          <blockquote>
-                            {{gst.message}}
-                            <cite>{{gst.name}}</cite>
-                          </blockquote>
-                        </div>
-                      </div>
-
-                    </div>
                 </div>
             </div>
         </section>
@@ -510,7 +460,7 @@
         <!-- Footer Section -->
         <footer>
           <p>
-              © 2017 | Deborah & Richard Wedding | By <a href="http://figothemes.com" target="_blank">FigoThemes</a>
+              © 2017 | DIA & FYP | By <a href="http://ferde.us" target="_blank">Ferde</a>
           </p>
           <div id="soundtrack" style="display:none"></div>
         </footer>
@@ -554,14 +504,14 @@
         <!-- Parallax -->
     	<script src="js/jquery.parallax.js"></script>
         <!-- Google Maps -->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCypj_-Y8aMaUUxO-3F67W1AaNMsoYXYP0"></script>
         <!-- PHP Form -->
         <script src="js/jquery.form.min.js" type="text/javascript"></script>
         <!-- Custom JS Functions -->
     	<script src="js/scripts.js"></script>
       <script>
         $(document).ready(function(){
-            
+
             setTimeout(function(){
             $('[data-toggle="tooltip"]').tooltip();
               if ( $('#owl-guest').length > 0 ) {
