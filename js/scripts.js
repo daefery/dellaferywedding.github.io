@@ -265,8 +265,20 @@ $(document).ready(function() {
     google.maps.event.addDomListener(window, 'load', init);
     function init() {
         // Basic options for a simple Google Map
-        var image1 = 'images/mosquee.png';
-        var image2 = 'images/lodging.png';
+        var image1 = {
+          url: 'images/ijab.png', // url
+          scaledSize: new google.maps.Size(50, 50), // scaled size
+          origin: new google.maps.Point(0,0), // origin
+          anchor: new google.maps.Point(0, 0) // anchor
+        }
+
+        var image2 = {
+            url: 'images/walimah.png', // url
+            scaledSize: new google.maps.Size(50, 50), // scaled size
+            origin: new google.maps.Point(0,0), // origin
+            anchor: new google.maps.Point(0, 0) // anchor
+        };
+
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
         var mapOptions = {
             // How zoomed in you want the map to start at (always required)
@@ -288,25 +300,27 @@ $(document).ready(function() {
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(-8.2093901,114.3706426),
             map: map,
-            title: 'Wedding',
+            title: 'Ijab Kabul',
             icon: image1
         });
         var marker2 = new google.maps.Marker({
             position: new google.maps.LatLng(-8.205463,114.353666),
             map: map,
-            title: 'Party',
+            title: 'Walimah',
             icon: image2
         });
         var iw = new google.maps.InfoWindow({
-            content: "<h5>Masjid Agung Baiturrahman</h5>"+
-            "<i>Kepatihan, Banyuwangi Sub-District, Banyuwangi Regency, East Java 68411</i><br>"+
-            "<a href='https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313' target='_blank'>go to map</a>"
+            content: "<h4>Masjid Agung Baiturrahman</h4>"+
+            "<img class=\"col-sm-6 pull-left\" src=\"images/masjid.jpg\" alt=\"Masjid\" style=\"width:50%;height:50%;\">"+
+            "<div class=\"col-sm-6\"><i>Kepatihan, Banyuwangi Sub-District, Banyuwangi Regency, East Java 68411</i><br><br>"+
+            "<a href='https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313' target='_blank'>go to map</a></div>"
         });
         var iw2 = new google.maps.InfoWindow({
-            content: "<h5>Hotel Tanjung Asri</h5>"+
-            "<i>Jalan Mawar No. 8-10, Penataban, Mojopanggung, Giri, Kabupaten Banyuwangi, Jawa Timur 68418</i><br>"+
-            "<i>phone : (0333) 421786</i><br>"+
-            "<a href='https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313' target='_blank'>go to map</a>"
+            content: "<h4>Hotel Tanjung Asri</h4>"+
+            "<img class=\"col-sm-6 pull-left\" src=\"images/hotel.jpg\" alt=\"hotel\" style=\"width:50%;height:50%;\">"+
+            "<div class=\"col-sm-6\"><i>Jalan Mawar No. 8-10, Penataban, Mojopanggung, Giri, Kabupaten Banyuwangi, Jawa Timur 68418</i><br>"+
+            "<i>phone : (0333) 421786</i><br><br>"+
+            "<a href=\"https://www.google.co.id/maps/place/Hotel+Tanjung+Asri/@-8.205463,114.353666,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xdd33067a79ed7ec0!8m2!3d-8.2054628!4d114.3558546\" target=\"_blank\">go to map</a></div>"
         });
         google.maps.event.addListener(marker, "click", function(e) {
             iw.open(map, this);
