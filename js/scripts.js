@@ -310,13 +310,13 @@ $(document).ready(function() {
             icon: image2
         });
         var iw = new google.maps.InfoWindow({
-            content: "<h4>Masjid Agung Baiturrahman</h4>"+
+            content: "<h4>Masjid Agung Baiturrahman (Ijab Kabul)</h4>"+
             "<img class=\"col-sm-6 pull-left\" src=\"images/masjid.jpg\" alt=\"Masjid\" style=\"width:50%;height:50%;\">"+
             "<div class=\"col-sm-6\"><i>Kepatihan, Banyuwangi Sub-District, Banyuwangi Regency, East Java 68411</i><br><br>"+
             "<a href='https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313' target='_blank'>go to map</a></div>"
         });
         var iw2 = new google.maps.InfoWindow({
-            content: "<h4>Hotel Tanjung Asri</h4>"+
+            content: "<h4>Hotel Tanjung Asri (Walimatul 'Ursy)</h4>"+
             "<img class=\"col-sm-6 pull-left\" src=\"images/hotel.jpg\" alt=\"hotel\" style=\"width:50%;height:50%;\">"+
             "<div class=\"col-sm-6\"><i>Jalan Mawar No. 8-10, Penataban, Mojopanggung, Giri, Kabupaten Banyuwangi, Jawa Timur 68418</i><br>"+
             "<i>phone : (0333) 421786</i><br><br>"+
@@ -410,4 +410,67 @@ $(document).ready(function() {
     $(document).ready(function(){
       HeartsBackground.initialize();
     });
+
+    window.sr = ScrollReveal();
+    sr.reveal('#love-story', {
+      origin: 'left',
+      duration: 1500,
+      delay: 0,
+      mobile: true
+    });
+    sr.reveal('#how-began', {
+      origin: 'bottom',
+      duration: 1500,
+      delay: 0,
+      mobile: true
+    });
+    sr.reveal('#gallery', {
+      origin: 'right',
+      duration: 1500,
+      delay: 0,
+      mobile: true
+    });
+    sr.reveal('#people', {
+      origin: 'top',
+      duration: 1500,
+      delay: 0,
+      mobile: true
+    });
+    sr.reveal('#event-map', {
+      origin: 'left',
+      duration: 1500,
+      delay: 0,
+      mobile: true
+    });
+    sr.reveal('#wishes', {
+      origin: 'right',
+      duration: 1500,
+      delay: 0,
+      mobile: true
+    });
+    sr.reveal('#invitation', {
+      origin: 'bottom',
+      duration: 1500,
+      delay: 0,
+      mobile: true
+    });
+    setTimeout(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+          if ( $('#owl-guest').length > 0 ) {
+            $("#owl-guest").owlCarousel({
+                autoPlay: 4000,
+                stopOnHover : true,
+                navigation : false,
+                itemsCustom : [
+                    [320, 1],
+                    [480, 1],
+                    [768, 2],
+                    [992, 4],
+                    [1200, 4]
+                ],
+                pagination : true
+            });
+        }
+    }, 1000);
+
 });
