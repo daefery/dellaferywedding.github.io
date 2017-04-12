@@ -1,6 +1,6 @@
 'use strict';
 var app = angular.module('wedding', ['ngRoute'])
-        .constant('API_URL', 'http://localhost:8080/angulara/public/api/v1/');
+        .constant('API_URL', 'http://localhost:8080/angulara/api/v1/');
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -22,7 +22,6 @@ app.factory("apiService", function($http, $q, API_URL){
         return data;
       })
       .catch(function(err){
-         // for example, "re-throw" to "hide" HTTP specifics
          return $q.reject("Data not available");
       })
     }
@@ -34,7 +33,6 @@ app.controller('HomeController', function($scope, $http, $timeout, API_URL){
   $scope.bride_name = 'Della';
   $scope.groom_name = 'Fery';
   $scope.duedate = 'July / 7th / 2017';
-
 });
 
 app.controller('StoryController', function($scope){
@@ -77,12 +75,6 @@ app.controller('EventController', function($scope){
             time:'8:00 - 10:00',
             description:'Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor.'
           },
-          // {
-          //   image:'images/restaurant-image.jpg',
-          //   type:'Restaurant',
-          //   time:'17:30 - 23:00',
-          //   description:'Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor.'
-          // },
           {
             image:'images/hotel.jpg',
             type:'Walimah',
@@ -95,8 +87,7 @@ app.controller('EventController', function($scope){
 app.controller('GuestController', function($scope, $http, apiService){
   apiService.getGuest()
      .then(function(result){
-        $scope.guest = angular.copy(result); // actual reports data
-        console.log($scope.guest);
+        $scope.guest = angular.copy(result);
       });
 });
 
@@ -129,10 +120,6 @@ app.controller('RsvpController', function($scope, $http, $timeout, apiService, A
           relation:(param.relation == 'other'?param.other:param.relation),
           message:param.message
         };
-        //append employee id to the URL if the form is in edit mode
-        // if (modalstate === 'edit'){
-        //     url += "/" + id;
-        // }
 
         $http({
             method: 'POST',
@@ -140,13 +127,19 @@ app.controller('RsvpController', function($scope, $http, $timeout, apiService, A
             data: $.param(data_guest),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(response) {
-            console.log(response);
-            $scope.isSuccess = true;
-            $scope.submitButtonText = "Submit";
-            $scope.form = {};
-            $scope.form.attend = true;
+            if(response.success){
+              $scope.isSuccess = true;
+              $scope.submitButtonText = "Submit";
+              $scope.form = {};
+              $scope.form.attend = true;
+            }else{
+              $scope.submitButtonText = "Submit";
+              $scope.isError = true;
+              $scope.msgError = response.message;
+              $scope.form = {};
+              $scope.form.attend = true;
+            }
         }).error(function(response) {
-            console.log(response);
             $scope.submitButtonText = "Submit";
             $scope.isError = true;
             $scope.msgError = 'This is embarassing. An error has occured. Please check the log for details';
@@ -157,27 +150,5 @@ app.controller('RsvpController', function($scope, $http, $timeout, apiService, A
     }else{
       $scope.isErrorForm = true;
     }
-}
-
-
-    //delete record
-    $scope.confirmDelete = function(id) {
-        var isConfirmDelete = confirm('Are you sure you want this record?');
-        if (isConfirmDelete) {
-            $http({
-                method: 'DELETE',
-                url: API_URL + 'employees/' + id
-            }).
-                    success(function(data) {
-                        console.log(data);
-                        location.reload();
-                    }).
-                    error(function(data) {
-                        console.log(data);
-                        alert('Unable to delete');
-                    });
-        } else {
-            return false;
-        }
-    }
+  }
 });

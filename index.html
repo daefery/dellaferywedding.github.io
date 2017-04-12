@@ -347,10 +347,10 @@
                             Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor. Ut in volutpat enim. Sed pharetra eget neque eu ornare. Suspendisse a metus sodales, convallis ante non, lobortis quam congue sapien odio.
                         </p>
                     </div>
-                    <div id="owl-guest" class="owl-carousel owl-theme mt-30">
+                    <div id="owl-guest" class="owl-carousel owl-theme mt-30" ng-if="guest.length > 0">
                       <div class="event-item" ng-repeat="gst in guest" style="float: left;
                           background: #f5f5f5;
-                          padding: 20px;
+                          padding: 0px;
                           position: relative;
                           height: 100%;
                           width:98%;
@@ -359,12 +359,12 @@
                         <h2 style="font-size: 20px;"></h2>
                         <b ng-if="gst.attend == 'false'" data-toggle="tooltip" data-placement="left" title="Can't Attend" class="round-button white" style="color: #fff;
                         background-color: #ad1414;
-                        left: 35px;bottom: 10px;">
+                        left: 15px;top: 7px;">
                             <i class="fa fa-calendar-times-o"></i>
                         </b>
                         <b ng-if="gst.attend == 'true'" data-toggle="tooltip" data-placement="left" title="Attending" class="round-button white" style="color: #fff;
                         background-color: #14ad4a;
-                        left: 35px;bottom: 10px;">
+                        left: 15px;top: 7px;">
                             <i class="fa fa-calendar-check-o"></i>
                         </b>
                         <blockquote>

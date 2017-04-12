@@ -466,7 +466,7 @@ $(document).ready(function() {
                     [480, 1],
                     [768, 2],
                     [992, 4],
-                    [1200, 4]
+                    [1200, 5]
                 ],
                 pagination : true
             });
