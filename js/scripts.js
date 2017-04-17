@@ -347,8 +347,8 @@ $(document).ready(function() {
     }
 
     var HeartsBackground = {
-      heartHeight: 60,
-      heartWidth: 64,
+      heartHeight: 40,
+      heartWidth: 44,
       hearts: [],
       heartImage: 'images/heart.png',
       maxHearts: 8,
@@ -456,21 +456,10 @@ $(document).ready(function() {
     });
     setTimeout(function(){
         $('[data-toggle="tooltip"]').tooltip();
-          if ( $('#owl-guest').length > 0 ) {
-            $("#owl-guest").owlCarousel({
-                autoPlay: 4000,
-                stopOnHover : true,
-                navigation : false,
-                itemsCustom : [
-                    [320, 1],
-                    [480, 1],
-                    [768, 2],
-                    [992, 4],
-                    [1200, 5]
-                ],
-                pagination : true
-            });
-        }
     }, 1000);
+
+    $(window).on('beforeunload', function(){
+      window.location.reload();
+   });
 
 });

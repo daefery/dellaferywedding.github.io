@@ -1,13 +1,32 @@
 'use strict';
-var app = angular.module('wedding', ['ngRoute'])
-        .constant('API_URL', 'http://localhost:8080/angulara/api/v1/');
+
+var app = angular.module('wedding', ['ngRoute', 'ngSanitize', 'ngDialog']);
+
+app.constant('API_URL', 'http://ferdeapi.hostzi.com/api/v1/');
 
 app.config(function($routeProvider) {
   $routeProvider
   .when('/', {
       templateUrl:'../index.html',
     });
+});
 
+app.directive('imageonload', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            scope.loading = function(param, img){
+              $('#'+param).hide();
+              $('#'+img).removeAttr('style');
+            }
+            element.bind('load', function() {
+                scope.$apply(attrs.imageonload);
+            });
+            element.bind('error', function(){
+              scope.$apply(attrs.imageonload);
+            });
+        }
+    };
 });
 
 app.factory("apiService", function($http, $q, API_URL){
@@ -24,8 +43,44 @@ app.factory("apiService", function($http, $q, API_URL){
       .catch(function(err){
          return $q.reject("Data not available");
       })
+    },
+    uploadImage: function(files) {
+      var result = false;
+      var formData = new FormData();
+      formData.append("file", files[0]);
+      return $http.post(url+'uploadimage', formData,
+      {
+        headers: {'Content-Type': undefined },
+        transformRequest: angular.identity
+      }).then(function(result) {
+        var data = result.data;
+        if (data == null){
+           return $q.reject("Invalid data");
+        }
+        return data;
+      })
+      .catch(function(err){
+         return $q.reject("Data not available");
+      })
+    },
+    saveGuest:function(data_guest){
+
+      return $http({
+          method: 'POST',
+          url: url+"guest",
+          data: $.param(data_guest),
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      }).then(function(result) {
+        var data = result.data;
+        if (data == null){
+           return $q.reject("Invalid data");
+        }
+        return data;
+      })
+      .catch(function(err){
+         return $q.reject("Data not available");
+      })
     }
-    // same idea for getReport
   }
 });
 
@@ -88,67 +143,141 @@ app.controller('GuestController', function($scope, $http, apiService){
   apiService.getGuest()
      .then(function(result){
         $scope.guest = angular.copy(result);
-      });
+        setTimeout(function () {
+          $("#testimonial-slider").owlCarousel({
+            autoPlay: 4000,
+            stopOnHover : true,
+            navigation : false,
+            itemsCustom : [
+              [320, 1],
+              [480, 1],
+              [768, 2],
+              [992, 3],
+              [1200, 3]
+            ],
+            pagination : true
+          });
+        });
+        }, 10);
+
+  $scope.loadImg = function(param) {
+    return param;
+  }
 });
 
-app.controller('RsvpController', function($scope, $http, $timeout, apiService, API_URL){
+app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiService, API_URL, ngDialog){
   $scope.form = {};
+  $scope.Images = {};
   $scope.submitButtonText = 'Submit';
-  $scope.isSuccess = false;
-  $scope.isErrorForm = false;
   $scope.submitted = false;
-  $scope.isError = false;
-     //save new record / update existing record
+
   $scope.save = function(form,param) {
     $scope.submitted = true;
-    $scope.isSuccess = false;
-    $scope.isErrorForm = false;
-    $scope.isError = false;
-    if(form){
-      var parse = parseInt(param.phone);
-      var v_phone = isNaN(parse);
-      if(v_phone){
-        $scope.isErrorForm = true;
-      }else{
-        $scope.submitButtonText = "";
-        var url = API_URL + "guest";
-        var data_guest = {
-          attend:(param.attend == undefined?true:param.attend),
-          name:param.name,
-          email:param.email,
-          phone:param.phone,
-          relation:(param.relation == 'other'?param.other:param.relation),
-          message:param.message
-        };
-
-        $http({
-            method: 'POST',
-            url: url,
-            data: $.param(data_guest),
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(response) {
-            if(response.success){
-              $scope.isSuccess = true;
-              $scope.submitButtonText = "Submit";
-              $scope.form = {};
-              $scope.form.attend = true;
-            }else{
-              $scope.submitButtonText = "Submit";
-              $scope.isError = true;
-              $scope.msgError = response.message;
-              $scope.form = {};
-              $scope.form.attend = true;
+    var check = $scope.formChecker(form, param);
+    if(check){
+      $scope.submitButtonText = "";
+      var data_guest = {
+        attend:(param.attend == undefined?true:param.attend),
+        name:param.name,
+        email:param.email,
+        phone:param.phone,
+        relation:(param.relation == 'other'?param.other+' of '+param.withWhom:param.relation),
+        message:param.message,
+        image:""
+      };
+      if($scope.Images.length > 0){
+        apiService.uploadImage($scope.Images)
+         .then(function(result){
+            if(result.success){
+              data_guest.image = result.filename;
+              apiService.saveGuest(data_guest).then(function(response){
+                if(response.success){
+                  ngDialog.open({
+                    template: '<h4 style="text-align:center">Your wish has been sent!</h4>'+
+                    '<button class="submit button lila" onclick="window.location.reload()">'+
+                      'Ok'+
+                    '</button>',
+                    plain: true,
+                    preCloseCallback: function(value) {
+                      window.location.reload();
+                    }
+                  });
+                }else{
+                  $scope.submitButtonText = "Submit";
+                  $scope.msgError = response.message;
+                  $scope.form = {};
+                  $scope.form.attend = true;
+                }
+              });
             }
-        }).error(function(response) {
+          });
+      }else{
+        apiService.saveGuest(data_guest).then(function(response){
+          if(response.success){
+            ngDialog.open({
+              template: '<h4 style="text-align:center">Your wish has been sent!</h4>'+
+              '<button class="submit button lila" onclick="window.location.reload()">'+
+                'Ok'+
+              '</button>',
+              plain: true,
+              preCloseCallback: function(value) {
+                window.location.reload();
+              }
+            });
+          }else{
             $scope.submitButtonText = "Submit";
-            $scope.isError = true;
-            $scope.msgError = 'This is embarassing. An error has occured. Please check the log for details';
+            $scope.msgError = response.message;
             $scope.form = {};
             $scope.form.attend = true;
+          }
         });
       }
-    }else{
-      $scope.isErrorForm = true;
     }
+  }
+
+  $scope.formChecker = function(form, param){
+    $scope.formErrorMessage = [];
+    var result = true;
+    var regexp = /[0-9() +-]/g;
+    var regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var no = param.phone;
+    var image_name = ($scope.Images.length > 0?$scope.Images[0].name:null);
+    if(!form){
+      $scope.formErrorMessage.push($sce.trustAsHtml("please, fill all the <b>required</b> * fields !"));
+      result = false;
+    }
+    if (!regexp.test(no) && no != undefined) {
+      $scope.formErrorMessage.push($sce.trustAsHtml("phone number format invalid! please refer to this format <strong>0811223223XXX</strong> !"));
+      result = false;
+    }
+    if($scope.Images.length > 0){
+      if($scope.Images[0].size > 1000000){
+        $scope.formErrorMessage.push($sce.trustAsHtml("image size more than <strong>1MB</strong> !"));
+        result = false;
+      }
+    }
+    if(param.message != undefined && param.message.length < 100){
+      $scope.formErrorMessage.push($sce.trustAsHtml("messages should be at least <strong>100 character</strong> !"));
+      result = false;
+    }
+    if(!regex_email.test(param.email) && param.email != undefined){
+      $scope.formErrorMessage.push($sce.trustAsHtml("email format invalid, please refer to this format <strong>ferde@info.com</strong> !"));
+      result = false;
+    }
+    if(image_name != null){
+      var image_ext = image_name.substr(image_name.lastIndexOf('.')+1)
+      if(image_ext == 'jpg' || image_ext == 'png'){
+
+      }else{
+        $scope.formErrorMessage.push($sce.trustAsHtml("file extention is not <strong>.jpg</strong> or <strong>.png</strong>!"));
+        result = false;
+      }
+    }
+
+    return result;
+  }
+
+  $scope.setImages = function(param){
+    $scope.Images = param;
   }
 });

@@ -5,9 +5,8 @@
     <!-- Meta, title, CSS, favicon, etc. -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clean and beautyful wedding HTML template">
     <meta name="keywords" content="wedding">
-    <meta name="author" content="www.figothemes.com">
+    <meta http-equiv="Cache-control" content="no-cache">
     <title>Material Wedding - Responsive HTML Template</title>
 
     <!-- Bootstrap core CSS -->
@@ -21,7 +20,8 @@
     <link rel="stylesheet" href="css/owl-carousel/owl.theme.css">
     <!-- Styles CSS -->
     <link rel="stylesheet" href="css/styles-01.css" type="text/css" media="screen" />
-
+    <link rel="stylesheet" href="css/ngDialog.min.css">
+    <link rel="stylesheet" href="css/ngDialog-theme-default.min.css">
     <!-- HTML5 shiv IE8 support -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -77,7 +77,7 @@
                   <li><a href="#gallery">Gallery</a></li>
                   <li><a href="#people">People</a></li>
                   <li><a href="#event-map">Location</a></li>
-                  <li><a href="#wishes">Wishes</a></li>
+                  <li><a id="link_wishes" href="#wishes">Wishes</a></li>
                   <li><a href="#invitation">Invitation</a></li>
                 </ul>
             </nav>
@@ -347,33 +347,28 @@
                             Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor. Ut in volutpat enim. Sed pharetra eget neque eu ornare. Suspendisse a metus sodales, convallis ante non, lobortis quam congue sapien odio.
                         </p>
                     </div>
-                    <div id="owl-guest" class="owl-carousel owl-theme mt-30" ng-if="guest.length > 0">
-                      <div class="event-item" ng-repeat="gst in guest" style="float: left;
-                          background: #f5f5f5;
-                          padding: 0px;
-                          position: relative;
-                          height: 100%;
-                          width:98%;
-                          margin:3px">
-
-                        <h2 style="font-size: 20px;"></h2>
-                        <b ng-if="gst.attend == 'false'" data-toggle="tooltip" data-placement="left" title="Can't Attend" class="round-button white" style="color: #fff;
-                        background-color: #ad1414;
-                        left: 15px;top: 7px;">
-                            <i class="fa fa-calendar-times-o"></i>
-                        </b>
-                        <b ng-if="gst.attend == 'true'" data-toggle="tooltip" data-placement="left" title="Attending" class="round-button white" style="color: #fff;
-                        background-color: #14ad4a;
-                        left: 15px;top: 7px;">
-                            <i class="fa fa-calendar-check-o"></i>
-                        </b>
-                        <blockquote>
-                          <cite class="head">{{gst.name}}</cite>
-                          <p>{{gst.message}}</p>
-                          <cite class="stat">{{gst.relation}}</cite>
-                        </blockquote>
-                      </div>
+                    <div class="col-md-offset-1 col-md-10">
+                    <div id="testimonial-slider" class="owl-carousel">
+                        <div class="testimonial" ng-repeat="gs in guest">
+                            <div class="pic">
+                                <div class="spinner" id="loading{{$index}}" style="background-color: #ad1457;height: 100%;width: 100%;">
+                                  <div style="margin-top:63px" class="bounce1"></div>
+                                  <div style="margin-top:63px" class="bounce2"></div>
+                                  <div style="margin-top:63px" class="bounce3"></div>
+                                </div>
+                                <img style="display:none" id="g_image{{$index}}" ng-if="gs.image != null" ng-src="{{gs.image}}" imageonload="loading('loading{{$index}}', 'g_image{{$index}}')" alt="">
+                                <img style="display:none" id="g_image{{$index}}" ng-if="gs.image == null" ng-src="images/user.png" imageonload="loading('loading{{$index}}', 'g_image{{$index}}')" alt="">
+                            </div>
+                            <p class="description">
+                              {{gs.message}}
+                            </p>
+                              <h3 class="testimonial-title">
+                                {{gs.name}}
+                                <small class="post">{{gs.relation}}</small>
+                            </h3>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         </section>
@@ -406,7 +401,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="email" id="emailinput" maxlength="64" ng-model="form.email" name="email" value="" required>
+                                    <input type="text" id="emailinput" maxlength="64" ng-model="form.email" name="email" value="" required>
                                     <span class="bar"></span>
                                     <label class="text-label">E-mail *</label>
                                 </div>
@@ -439,30 +434,39 @@
                                     <label class="text-label">Other *</label>
                                 </div>
                             </div>
+                            <div class="col-md-4" ng-show="form.relation == 'other'">
+                                <div class="form-group">
+                                  <select ng-model="form.withWhom" id="sel1" ng-required="form.relation == 'other'">
+                                    <option value="della">Della</option>
+                                    <option value="fery">Fery</option>
+                                  </select>
+                                    <span class="bar"></span>
+                                    <label class="text-label">Of *</label>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <textarea id="noteinput" value="" ng-model="form.message" maxlength="250" name="note" required></textarea>
+                                    <textarea id="noteinput" value="" ng-model="form.message" maxlength="300" name="note" required></textarea>
                                     <span class="bar"></span>
-                                    <i class="pull-right">{{250 - form.message.length}}</i>
+                                    <i class="pull-right">{{300 - form.message.length}}</i>
                                     <label class="text-label">Leave us a message *</label>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <input type="file" name="file" onchange="angular.element(this).scope().setImages(this.files)">
+                            </div>
                         </div>
                         <!-- Notifications -->
-                        <div class="col-md-8 col-centered">
-                            <div id="bad-msg" class="alert alert-danger" ng-show="submitted && isErrorForm">
-                              Please, fill all the <strong>required</strong> * fields!
-                              <br>Please, check input format such as email or phone <strong>email@prov.ext / 081XXXXXXXXXX</strong>!
-                            </div>
-                            <div id="success" class="alert alert-success" ng-show="isSuccess">
-                                Your message has been sent!
-                            </div>
-                            <div id="bad-server" class="alert alert-danger" ng-show="isError">
-                                {{msgError}}
+                        <div class="col-md-8 col-centered" style="margin-top: 20px;">
+                            <div id="bad-msg" class="alert alert-danger" ng-show="submitted && formErrorMessage.length > 0">
+                              <ul>
+                                <li ng-repeat="err in formErrorMessage">
+                                  <span ng-bind-html="err"></span>
+                                </li>
+                              </ul>
                             </div>
                         </div>
                         <!-- Submit Button -->
-                        <!-- <input type="submit" id="submitinput" ng-click="Attend(form)" name="submit" class="submit button lila" value="Submit"/> -->
                         <button class="submit button lila" type="submit" ng-click="save(guestForm.$valid,form)" id="submitinput" ng-disabled="submitButtonText==''">
                           <div class="spinner" ng-show="submitButtonText == ''">
                             <div class="bounce1"></div>
@@ -509,7 +513,9 @@
       <!-- angularjs -->
       <script src="js/angular.min.js"></script>
       <script src="js/angular-route.min.js"></script>
-      <script src="app/App.js"></script>
+      <script src="js/ngDialog.min.js"></script>
+      <script src="js/angular-sanitize.min.js"></script>
+      <script src="app/app.js"></script>
       <!-- Device.js -->
     	<script src="js/device.min.js"></script>
       <!-- Bootstrap -->
