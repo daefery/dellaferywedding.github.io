@@ -28,19 +28,20 @@
 }
 /* Styling Next and Prev buttons */
 .owl-theme .owl-controls .owl-buttons div {
-	color: #FFF;
+	top:0;
+	bottom: 0;
 	display: inline-block;
 	zoom: 1;
-	*display: inline;/*IE7 life-saver */
-	margin: 5px;
-	padding: 3px 10px;
-	font-size: 12px;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;
-	background: #869791;
-	filter: Alpha(Opacity=50);/*IE7 fix*/
-	opacity: 0.5;
+	margin: 0;
+	width: 50px;
+	height: 50px;
+	line-height: 45px;
+	text-align: center;
+	font-size: 3em;
+	color: #FFF;
+	background: #000;
+	opacity: .6;
+	border-radius: 50px;
 }
 /* Clickable class fix problem with hover on touch devices */
 /* Use it for non-touch hover action */

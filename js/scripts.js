@@ -75,57 +75,6 @@ $(document).ready(function() {
             pagination : false
     	});
     }
-
-	// 04. Gallery slider
-	if ( $('#owl-gallery').length > 0 ) {
-		$("#owl-gallery").owlCarousel({
-	        navigation : false,
-	        itemsCustom : [
-	            [320, 1],
-	            [480, 1],
-	            [768, 2],
-	            [992, 3],
-	            [1200, 3]
-	        ],
-	        pagination : true
-	    });
-	}
-
-    // 05. People Involved slider
-	if ( $('#owl-people').length > 0 ) {
-		$("#owl-people").owlCarousel({
-	        autoPlay: 4000,
-	        stopOnHover : true,
-	        navigation : false,
-	        itemsCustom : [
-	            [320, 1],
-	            [480, 1],
-	            [768, 2],
-	            [992, 3],
-	            [1200, 3]
-	        ],
-	        pagination : true
-	    });
-	}
-// setTimeout(function(){
-//       if ( $('#owl-guest').length > 0 ) {
-//         $("#owl-guest").owlCarousel({
-//             autoPlay: 4000,
-//             stopOnHover : true,
-//             navigation : false,
-//             itemsCustom : [
-//                 [320, 1],
-//                 [480, 1],
-//                 [768, 2],
-//                 [992, 4],
-//                 [1200, 4]
-//             ],
-//             pagination : true
-//         });
-//     }
-// }, 2000);
-
-
     // 06. Parallax effects
     if( !device.tablet() && !device.mobile() && $('#parallax-quote').lenght > 0 ) {
         $('#parallax-quote').parallax("50%", 0.2);
@@ -265,19 +214,12 @@ $(document).ready(function() {
     google.maps.event.addDomListener(window, 'load', init);
     function init() {
         // Basic options for a simple Google Map
-        var image1 = {
-          url: 'images/ijab.png', // url
-          scaledSize: new google.maps.Size(50, 50), // scaled size
-          origin: new google.maps.Point(0,0), // origin
-          anchor: new google.maps.Point(0, 0) // anchor
-        }
-
-        var image2 = {
-            url: 'images/walimah.png', // url
-            scaledSize: new google.maps.Size(50, 50), // scaled size
-            origin: new google.maps.Point(0,0), // origin
-            anchor: new google.maps.Point(0, 0) // anchor
-        };
+        // var image = {
+        //   url: 'images/map-marker-icon.png', // url
+        //   scaledSize: new google.maps.Size(50, 50), // scaled size
+        //   origin: new google.maps.Point(0,0), // origin
+        //   anchor: new google.maps.Point(0, 0) // anchor
+        // }
 
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
         var mapOptions = {
@@ -300,14 +242,12 @@ $(document).ready(function() {
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(-8.2093901,114.3706426),
             map: map,
-            title: 'Ijab Kabul',
-            icon: image1
+            title: 'Ijab Kabul'
         });
         var marker2 = new google.maps.Marker({
             position: new google.maps.LatLng(-8.205463,114.353666),
             map: map,
-            title: 'Walimah',
-            icon: image2
+            title: 'Walimah'
         });
         var iw = new google.maps.InfoWindow({
             content: "<h4>Masjid Agung Baiturrahman (Ijab Kabul)</h4>"+
@@ -411,49 +351,6 @@ $(document).ready(function() {
       HeartsBackground.initialize();
     });
 
-    window.sr = ScrollReveal();
-    sr.reveal('#love-story', {
-      origin: 'left',
-      duration: 1500,
-      delay: 0,
-      mobile: true
-    });
-    sr.reveal('#how-began', {
-      origin: 'bottom',
-      duration: 1500,
-      delay: 0,
-      mobile: true
-    });
-    sr.reveal('#gallery', {
-      origin: 'right',
-      duration: 1500,
-      delay: 0,
-      mobile: true
-    });
-    sr.reveal('#people', {
-      origin: 'top',
-      duration: 1500,
-      delay: 0,
-      mobile: true
-    });
-    sr.reveal('#event-map', {
-      origin: 'left',
-      duration: 1500,
-      delay: 0,
-      mobile: true
-    });
-    sr.reveal('#wishes', {
-      origin: 'right',
-      duration: 1500,
-      delay: 0,
-      mobile: true
-    });
-    sr.reveal('#invitation', {
-      origin: 'bottom',
-      duration: 1500,
-      delay: 0,
-      mobile: true
-    });
     setTimeout(function(){
         $('[data-toggle="tooltip"]').tooltip();
     }, 1000);

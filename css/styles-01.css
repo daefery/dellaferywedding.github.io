@@ -1581,7 +1581,6 @@ cite.stat:before{
     color: #6f6f6f;
     line-height: 25px;
     margin-bottom: 30px;
-    text-align: justify;
 }
 .testimonial .testimonial-title{
     display: block;
@@ -1615,10 +1614,3 @@ cite.stat:before{
         top: -60px;
     }
 }
-/*color: #fff;
-background-color: #14ad4a;
-left: 23px;bottom: 12px;*/
-
-/*color: #fff;
-background-color: #ad1414;
-left: 23px;bottom: 12px;*/

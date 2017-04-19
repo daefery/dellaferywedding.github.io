@@ -11,6 +11,45 @@ app.config(function($routeProvider) {
     });
 });
 
+app.directive('owlCarousel', function(){
+  return {
+        restrict: 'E',
+        transclude: false,
+        link: function (scope) {
+            scope.initCarousel = function(element) {
+              // provide any default options you want
+                var defaultOptions = {
+                };
+                var customOptions = scope.$eval($(element).attr('data-options'));
+                // combine the two options objects
+                for(var key in customOptions) {
+                    defaultOptions[key] = customOptions[key];
+                    if(key == 'navigation'){
+                      if(defaultOptions[key]){
+                        defaultOptions['navigationText'] = ["<i class=\"fa fa-chevron-circle-left\" style=\"margin-top: 5px;\" aria-hidden=\"true\"></i>","<i class=\"fa fa-chevron-circle-right\" style=\"margin-top: 5px;\" aria-hidden=\"true\"></i>"];
+                      }
+                    }
+                }
+                // init carousel
+                $(element).owlCarousel(defaultOptions);
+            };
+        }
+    };
+});
+
+app.directive('owlCarouselItem', function(){
+  return {
+        restrict: 'A',
+        transclude: false,
+        link: function(scope, element) {
+          // wait for the last item in the ng-repeat then call init
+            if(scope.$last) {
+                scope.initCarousel(element.parent());
+            }
+        }
+    };
+});
+
 app.directive('imageonload', function() {
     return {
         restrict: 'A',
@@ -143,22 +182,7 @@ app.controller('GuestController', function($scope, $http, apiService){
   apiService.getGuest()
      .then(function(result){
         $scope.guest = angular.copy(result);
-        setTimeout(function () {
-          $("#testimonial-slider").owlCarousel({
-            autoPlay: 4000,
-            stopOnHover : true,
-            navigation : false,
-            itemsCustom : [
-              [320, 1],
-              [480, 1],
-              [768, 2],
-              [992, 3],
-              [1200, 3]
-            ],
-            pagination : true
-          });
-        });
-        }, 10);
+      });
 
   $scope.loadImg = function(param) {
     return param;
@@ -172,6 +196,7 @@ app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiServ
   $scope.submitted = false;
 
   $scope.save = function(form,param) {
+    $scope.msgError = undefined;
     $scope.submitted = true;
     var check = $scope.formChecker(form, param);
     if(check){
@@ -202,6 +227,7 @@ app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiServ
                       window.location.reload();
                     }
                   });
+                  $scope.submitButtonText = "Submit";
                 }else{
                   $scope.submitButtonText = "Submit";
                   $scope.msgError = response.message;
@@ -224,6 +250,7 @@ app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiServ
                 window.location.reload();
               }
             });
+            $scope.submitButtonText = "Submit";
           }else{
             $scope.submitButtonText = "Submit";
             $scope.msgError = response.message;
