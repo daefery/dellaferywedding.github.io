@@ -187,7 +187,7 @@ section {
 .hr {
   display: block;
   height: 20px;
-  background-image: url('../images/logo-20.png');
+  background-image: url('../images/ferde-20.png');
   background-repeat: no-repeat;
   background-position: center;
   margin-bottom: 30px;
@@ -261,7 +261,7 @@ footer a:hover {
   right: 0;
   bottom: 0;
   background-color: #fff;
-  background-image: url(../images/preloader.gif);
+  background-image: url(../images/loading.gif);
   background-repeat: no-repeat;
   background-position: center;
   z-index: 9999;
@@ -1304,6 +1304,18 @@ input[type=text] {
 input[type=text]:focus {
   outline: none;
 }
+input[type=file] {
+  font-size: 16px;
+  font-weight: 300;
+  padding: 10px 10px 10px 0;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+}
+input[type=file]:focus {
+  outline: none;
+}
 textarea {
   font-size: 16px !important;
   font-weight: 300 !important;
@@ -1342,6 +1354,20 @@ select:focus {
   font-size: 14px;
   color: #ad1457;
 }
+.text-label-file {
+  color: #6a6a6a;
+  font-size: 16px;
+  font-weight: 300;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  top: -20px;
+}
+.text-label-file.active {
+  top: -20px;
+  font-size: 14px;
+  color: #ad1457;
+}
 .bar {
   position: relative;
   display: block;
@@ -1367,6 +1393,10 @@ select:focus {
 }
 input[type=text]:focus ~ .bar:before,
 input[type=text]:focus ~ .bar:after {
+  width: 50%;
+}
+input[type=file]:focus ~ .bar:before,
+input[type=file]:focus ~ .bar:after {
   width: 50%;
 }
 textarea:focus ~ .bar:before,

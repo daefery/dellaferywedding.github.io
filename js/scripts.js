@@ -1,30 +1,3 @@
-// ---------------------------------
-//  Theme Name: Material Wedding
-//  Version: 1.0
-//  Author: FigoThemes
-//  Web: figothemes.com
-// ---------------------------------
-
-// Script Guide
-
-// 00. Page Preloader
-// 01. Prevent empty links scroll to top default functionality
-// 02. Main navigation
-// 03. Fullwidth slider
-// 04. Gallery slider
-// 05. People Involved slider
-// 06. Parallax effects
-// 07. Lightcase - images zoom library
-// 08. Scroll To Top & Sticky header functionality
-// 09. Smooth Scroll to Section
-// 10. Countdown
-// 11. Material Inputs Fields
-// 12. RSVP Form
-// 13. Google Maps with markers
-// 14. YouTUBE Video Header
-
-// ---------------------------------
-
 'use strict';
 
 // 00. Preloader
@@ -163,6 +136,16 @@ $(document).ready(function() {
               $(this).siblings('.text-label').addClass('active');
         }
     });
+    $('#contact #photo-guest').on('focus', function() {
+        $(this).siblings('.text-label-file').addClass('active');
+    });
+    $('#contact #photo-guest').on('blur', function() {
+        if( $(this).val() == '' ) {
+              $(this).siblings('.text-label-file').removeClass('active');
+        } else {
+              $(this).siblings('.text-label-file').addClass('active');
+        }
+    });
 
     $('#contact textarea').on('focus', function() {
         $(this).siblings('.text-label').addClass('active');
@@ -200,38 +183,23 @@ $(document).ready(function() {
                 $('#bad-msg').fadeIn("slow");
             }
         });
-        // $('#show-form').on('click', function() {
-        //     $('.form-fields').fadeIn();
-        //     $('#submitinput').fadeIn();
-        // });
-        // $('#hide-form').on('click', function() {
-        //     $('.form-fields').fadeOut();
-        //     $('#submitinput').fadeOut();
-        // });
     }
 
     // 13. Google Maps with markers
     google.maps.event.addDomListener(window, 'load', init);
     function init() {
-        // Basic options for a simple Google Map
-        // var image = {
-        //   url: 'images/map-marker-icon.png', // url
-        //   scaledSize: new google.maps.Size(50, 50), // scaled size
-        //   origin: new google.maps.Point(0,0), // origin
-        //   anchor: new google.maps.Point(0, 0) // anchor
-        // }
-
         // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
         var mapOptions = {
             // How zoomed in you want the map to start at (always required)
             zoom: 15,
+            mapTypeId: 'roadmap',
             // The latitude and longitude to center the map (always required)
-            center: new google.maps.LatLng(-8.2093901,114.3706426), // New York
+            center: new google.maps.LatLng(-8.2093901,114.3706426),
             scrollwheel: false,
-            zoomControl: false,
+            zoomControl: true
             // How you would like to style the map.
             // This is where you would paste any style found on Snazzy Maps.
-            styles: [ { "featureType": "water", "elementType": "geometry", "stylers": [ { "color": "#e9e9e9" }, { "lightness": 17 } ] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [ { "color": "#f5f5f5" }, { "lightness": 20 } ] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [ { "color": "#ffffff" }, { "lightness": 17 } ] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [ { "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 } ] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [ { "color": "#ffffff" }, { "lightness": 18 } ] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [ { "color": "#ffffff" }, { "lightness": 16 } ] }, { "featureType": "poi", "elementType": "geometry", "stylers": [ { "color": "#f5f5f5" }, { "lightness": 21 } ] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [ { "color": "#dedede" }, { "lightness": 21 } ] }, { "elementType": "labels.text.stroke", "stylers": [ { "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 } ] }, { "elementType": "labels.text.fill", "stylers": [ { "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 } ] }, { "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] }, { "featureType": "transit", "elementType": "geometry", "stylers": [ { "color": "#f2f2f2" }, { "lightness": 19 } ] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [ { "color": "#fefefe" }, { "lightness": 20 } ] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [ { "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 } ] }]
+
         };
         // Get the HTML DOM element that will contain your map
         // We are using a div with id="map" seen below in the <body>
@@ -240,12 +208,12 @@ $(document).ready(function() {
         var map = new google.maps.Map(mapElement, mapOptions);
         // Let's also add a markers while we're at it
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(-8.2093901,114.3706426),
+            position: new google.maps.LatLng(-8.209390,114.372831),
             map: map,
             title: 'Ijab Kabul'
         });
         var marker2 = new google.maps.Marker({
-            position: new google.maps.LatLng(-8.205463,114.353666),
+            position: new google.maps.LatLng(-8.205463,114.355855),
             map: map,
             title: 'Walimah'
         });
@@ -268,21 +236,12 @@ $(document).ready(function() {
         google.maps.event.addListener(marker2, "click", function(e) {
             iw2.open(map, this);
         });
-        // var marker3 = new google.maps.Marker({
-        //     position: new google.maps.LatLng(-8.2205869,114.3686616),
-        //     map: map,
-        //     title: 'Restaurant',
-        //     icon: image3
-        // });
     }
 
     // 14. YouTUBE Video Header
     if (!device.tablet() && !device.mobile() && ( $('.video-header').length > 0 )) {
         $(".player").mb_YTPlayer();
         $(".player").YTPApplyFilters({
-           //grayscale: 10,
-           //opacity: 10,
-           //blur: 5
         });
     }
 

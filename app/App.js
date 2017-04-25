@@ -2,7 +2,8 @@
 
 var app = angular.module('wedding', ['ngRoute', 'ngSanitize', 'ngDialog']);
 
-app.constant('API_URL', 'http://ferdeapi.hostzi.com/api/v1/');
+app.constant('API_URL', 'http://localhost:8080/angulara/api/v1/');
+// app.constant('API_URL', 'http://ferdeapi.hostzi.com/api/v1/');
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -78,10 +79,7 @@ app.factory("apiService", function($http, $q, API_URL){
            return $q.reject("Invalid data");
         }
         return data;
-      })
-      .catch(function(err){
-         return $q.reject("Data not available");
-      })
+      });
     },
     uploadImage: function(files) {
       var result = false;
@@ -97,10 +95,7 @@ app.factory("apiService", function($http, $q, API_URL){
            return $q.reject("Invalid data");
         }
         return data;
-      })
-      .catch(function(err){
-         return $q.reject("Data not available");
-      })
+      });
     },
     saveGuest:function(data_guest){
 
@@ -115,10 +110,7 @@ app.factory("apiService", function($http, $q, API_URL){
            return $q.reject("Invalid data");
         }
         return data;
-      })
-      .catch(function(err){
-         return $q.reject("Data not available");
-      })
+      });
     }
   }
 });
