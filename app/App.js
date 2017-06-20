@@ -51,29 +51,29 @@ app.directive('owlCarouselItem', function(){
     };
 });
 
-app.directive('imageonload', function() {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            scope.loading = function(param, img){
-              $('#'+param).hide();
-              $('#'+img).removeAttr('style');
-            }
-            element.bind('load', function() {
-                scope.$apply(attrs.imageonload);
-            });
-            element.bind('error', function(){
-              scope.$apply(attrs.imageonload);
-            });
-        }
-    };
-});
+// app.directive('imageonload', function() {
+//     return {
+//         restrict: 'A',
+//         link: function(scope, element, attrs) {
+//             scope.loading = function(param, img){
+//               $('#'+param).hide();
+//               $('#'+img).removeAttr('style');
+//             }
+//             element.bind('load', function() {
+//                 scope.$apply(attrs.imageonload);
+//             });
+//             element.bind('error', function(){
+//               scope.$apply(attrs.imageonload);
+//             });
+//         }
+//     };
+// });
 
 app.factory("apiService", function($http, $q, API_URL){
   var url = API_URL;
   return {
     getGuest: function() {
-      return $http.get(url+'guest').then(function(result) {
+      return $http.get(url+'guests').then(function(result) {
         var data = result.data;
         if (data == null){
            return $q.reject("Invalid data");
@@ -81,27 +81,27 @@ app.factory("apiService", function($http, $q, API_URL){
         return data;
       });
     },
-    uploadImage: function(files) {
-      var result = false;
-      var formData = new FormData();
-      formData.append("file", files[0]);
-      return $http.post(url+'uploadimage', formData,
-      {
-        headers: {'Content-Type': undefined },
-        transformRequest: angular.identity
-      }).then(function(result) {
-        var data = result.data;
-        if (data == null){
-           return $q.reject("Invalid data");
-        }
-        return data;
-      });
-    },
+    // uploadImage: function(files) {
+    //   var result = false;
+    //   var formData = new FormData();
+    //   formData.append("file", files[0]);
+    //   return $http.post(url+'uploadimage', formData,
+    //   {
+    //     headers: {'Content-Type': undefined },
+    //     transformRequest: angular.identity
+    //   }).then(function(result) {
+    //     var data = result.data;
+    //     if (data == null){
+    //        return $q.reject("Invalid data");
+    //     }
+    //     return data;
+    //   });
+    // },
     saveGuest:function(data_guest){
 
       return $http({
           method: 'POST',
-          url: url+"guest",
+          url: url+"guests",
           data: $.param(data_guest),
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }).then(function(result) {
@@ -129,15 +129,23 @@ app.controller('StoryController', function($scope){
 app.controller('GalleryController', function($scope){
   $scope.gallery =
     [
-      {image:'images/gallery/gallery-1.jpg',thumb:'images/gallery/gallery-1_thumb.jpg'},
-      {image:'images/gallery/gallery-2.jpg',thumb:'images/gallery/gallery-2_thumb.jpg'},
-      {image:'images/gallery/gallery-3.jpg',thumb:'images/gallery/gallery-3_thumb.jpg'},
-      {image:'images/gallery/gallery-4.jpg',thumb:'images/gallery/gallery-4_thumb.jpg'},
-      {image:'images/gallery/gallery-5.jpg',thumb:'images/gallery/gallery-5_thumb.jpg'},
-      {image:'images/gallery/gallery-6.jpg',thumb:'images/gallery/gallery-6_thumb.jpg'},
-      {image:'images/gallery/gallery-7.jpg',thumb:'images/gallery/gallery-7_thumb.jpg'},
-      {image:'images/gallery/gallery-8.jpg',thumb:'images/gallery/gallery-8_thumb.jpg'},
-      {image:'images/gallery/gallery-9.jpg',thumb:'images/gallery/gallery-9_thumb.jpg'}
+      // {image:'images/gallery/gallery-1.jpg',thumb:'images/gallery/gallery-1_thumb.jpg'},
+      // {image:'images/gallery/gallery-2.jpg',thumb:'images/gallery/gallery-2_thumb.jpg'},
+      // {image:'images/gallery/gallery-3.jpg',thumb:'images/gallery/gallery-3_thumb.jpg'},
+      // {image:'images/gallery/gallery-4.jpg',thumb:'images/gallery/gallery-4_thumb.jpg'},
+      // {image:'images/gallery/gallery-5.jpg',thumb:'images/gallery/gallery-5_thumb.jpg'},
+      // {image:'images/gallery/gallery-6.jpg',thumb:'images/gallery/gallery-6_thumb.jpg'},
+      // {image:'images/gallery/gallery-7.jpg',thumb:'images/gallery/gallery-7_thumb.jpg'},
+      // {image:'images/gallery/gallery-8.jpg',thumb:'images/gallery/gallery-8_thumb.jpg'},
+      // {image:'images/gallery/gallery-9.jpg',thumb:'images/gallery/gallery-9_thumb.jpg'},
+      {image:'images/gallery/gallery-10.jpg',thumb:'images/gallery/gallery-10_thumb.jpg'},
+      {image:'images/gallery/gallery-11.jpg',thumb:'images/gallery/gallery-11_thumb.jpg'},
+      {image:'images/gallery/gallery-12.jpg',thumb:'images/gallery/gallery-12_thumb.jpg'},
+      {image:'images/gallery/gallery-13.jpg',thumb:'images/gallery/gallery-13_thumb.jpg'},
+      {image:'images/gallery/gallery-14.jpg',thumb:'images/gallery/gallery-14_thumb.jpg'},
+      {image:'images/gallery/gallery-15.jpg',thumb:'images/gallery/gallery-15_thumb.jpg'},
+      {image:'images/gallery/gallery-16.jpg',thumb:'images/gallery/gallery-16_thumb.jpg'},
+      {image:'images/gallery/gallery-17.jpg',thumb:'images/gallery/gallery-17_thumb.jpg'},
     ];
 });
 
@@ -152,38 +160,20 @@ app.controller('PeopleController', function($scope){
     ];
 });
 
-app.controller('EventController', function($scope){
-  $scope.agenda =
-        [
-          {
-            image:'images/masjid.jpg',
-            type:'Ijab Qobul',
-            time:'8:00 - 10:00',
-            description:'Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor.'
-          },
-          {
-            image:'images/hotel.jpg',
-            type:'Walimah',
-            time:'20:00 - 22:00',
-            description:'Donec sit amet nibh ullamcorper, mattis elit at, venenatis ex. Proin justo nisi, vulputate mollis tincidunt ut, elementum non dolor.'
-          }
-        ];
-});
-
 app.controller('GuestController', function($scope, $http, apiService){
   apiService.getGuest()
      .then(function(result){
         $scope.guest = angular.copy(result);
       });
 
-  $scope.loadImg = function(param) {
-    return param;
-  }
+  // $scope.loadImg = function(param) {
+  //   return param;
+  // }
 });
 
 app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiService, API_URL, ngDialog){
   $scope.form = {};
-  $scope.Images = {};
+  // $scope.Images = {};
   $scope.submitButtonText = 'Submit';
   $scope.submitted = false;
 
@@ -200,40 +190,40 @@ app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiServ
         phone:param.phone,
         relation:(param.relation == 'other'?param.other+' of '+param.withWhom:param.relation),
         message:param.message,
-        image:""
+        // image:""
       };
-      if($scope.Images.length > 0){
-        apiService.uploadImage($scope.Images)
-         .then(function(result){
-            if(result.success){
-              data_guest.image = result.filename;
-              apiService.saveGuest(data_guest).then(function(response){
-                if(response.success){
-                  ngDialog.open({
-                    template: '<h4 style="text-align:center">Your wish has been sent!</h4>'+
-                    '<button class="submit button lila" onclick="window.location.reload()">'+
-                      'Ok'+
-                    '</button>',
-                    plain: true,
-                    preCloseCallback: function(value) {
-                      window.location.reload();
-                    }
-                  });
-                  $scope.submitButtonText = "Submit";
-                }else{
-                  $scope.submitButtonText = "Submit";
-                  $scope.msgError = response.message;
-                  $scope.form = {};
-                  $scope.form.attend = true;
-                }
-              });
-            }
-          });
-      }else{
+      // if($scope.Images.length > 0){
+      //   apiService.uploadImage($scope.Images)
+      //    .then(function(result){
+      //       if(result.success){
+      //         data_guest.image = result.filename;
+      //         apiService.saveGuest(data_guest).then(function(response){
+      //           if(response.success){
+      //             ngDialog.open({
+      //               template: '<h4 style="text-align:center">Your wish has been sent! <br>Please check your email for confirmation!.</h4>'+
+      //               '<button class="submit button lila" onclick="window.location.reload()">'+
+      //                 'Ok'+
+      //               '</button>',
+      //               plain: true,
+      //               preCloseCallback: function(value) {
+      //                 window.location.reload();
+      //               }
+      //             });
+      //             $scope.submitButtonText = "Submit";
+      //           }else{
+      //             $scope.submitButtonText = "Submit";
+      //             $scope.msgError = response.message;
+      //             $scope.form = {};
+      //             $scope.form.attend = true;
+      //           }
+      //         });
+      //       }
+      //     });
+      // }else{
         apiService.saveGuest(data_guest).then(function(response){
           if(response.success){
             ngDialog.open({
-              template: '<h4 style="text-align:center">Your wish has been sent!</h4>'+
+              template: '<h4 style="text-align:center">Your wish has been sent! <br>Please check your email for confirmation!.</h4>'+
               '<button class="submit button lila" onclick="window.location.reload()">'+
                 'Ok'+
               '</button>',
@@ -250,7 +240,7 @@ app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiServ
             $scope.form.attend = true;
           }
         });
-      }
+      // }
     }
   }
 
@@ -260,7 +250,7 @@ app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiServ
     var regexp = /[0-9() +-]/g;
     var regex_email = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var no = param.phone;
-    var image_name = ($scope.Images.length > 0?$scope.Images[0].name:null);
+    // var image_name = ($scope.Images.length > 0?$scope.Images[0].name:null);
     if(!form){
       $scope.formErrorMessage.push($sce.trustAsHtml("please, fill all the <b>required</b> * fields !"));
       result = false;
@@ -269,12 +259,12 @@ app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiServ
       $scope.formErrorMessage.push($sce.trustAsHtml("phone number format invalid! please refer to this format <strong>0811223223XXX</strong> !"));
       result = false;
     }
-    if($scope.Images.length > 0){
-      if($scope.Images[0].size > 1000000){
-        $scope.formErrorMessage.push($sce.trustAsHtml("image size more than <strong>1MB</strong> !"));
-        result = false;
-      }
-    }
+    // if($scope.Images.length > 0){
+    //   if($scope.Images[0].size > 1000000){
+    //     $scope.formErrorMessage.push($sce.trustAsHtml("image size more than <strong>1MB</strong> !"));
+    //     result = false;
+    //   }
+    // }
     if(param.message != undefined && param.message.length < 100){
       $scope.formErrorMessage.push($sce.trustAsHtml("messages should be at least <strong>100 character</strong> !"));
       result = false;
@@ -283,20 +273,20 @@ app.controller('RsvpController', function($scope, $http, $sce, $timeout, apiServ
       $scope.formErrorMessage.push($sce.trustAsHtml("email format invalid, please refer to this format <strong>ferde@info.com</strong> !"));
       result = false;
     }
-    if(image_name != null){
-      var image_ext = image_name.substr(image_name.lastIndexOf('.')+1)
-      if(image_ext == 'jpg' || image_ext == 'png'){
-
-      }else{
-        $scope.formErrorMessage.push($sce.trustAsHtml("file extention is not <strong>.jpg</strong> or <strong>.png</strong>!"));
-        result = false;
-      }
-    }
+    // if(image_name != null){
+    //   var image_ext = image_name.substr(image_name.lastIndexOf('.')+1)
+    //   if(image_ext == 'jpg' || image_ext == 'png'){
+    //
+    //   }else{
+    //     $scope.formErrorMessage.push($sce.trustAsHtml("file extention is not <strong>.jpg</strong> or <strong>.png</strong>!"));
+    //     result = false;
+    //   }
+    // }
 
     return result;
   }
-
-  $scope.setImages = function(param){
-    $scope.Images = param;
-  }
+  //
+  // $scope.setImages = function(param){
+  //   $scope.Images = param;
+  // }
 });

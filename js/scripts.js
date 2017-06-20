@@ -220,7 +220,7 @@ $(document).ready(function() {
         var iw = new google.maps.InfoWindow({
             content: "<h4>Masjid Agung Baiturrahman (Ijab Kabul)</h4>"+
             "<img class=\"col-sm-6 pull-left\" src=\"images/masjid.jpg\" alt=\"Masjid\" style=\"width:50%;height:50%;\">"+
-            "<div class=\"col-sm-6\"><i>Kepatihan, Banyuwangi Sub-District, Banyuwangi Regency, East Java 68411</i><br><br>"+
+            "<div class=\"col-sm-6\"><i>Jalan Jendral Sudirman No. 137, Kepatihan, Banyuwangi, Jawa Timur 68411</i><br><br>"+
             "<a href='https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313' target='_blank'>go to map</a></div>"
         });
         var iw2 = new google.maps.InfoWindow({
@@ -231,10 +231,10 @@ $(document).ready(function() {
             "<a href=\"https://www.google.co.id/maps/place/Hotel+Tanjung+Asri/@-8.205463,114.353666,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xdd33067a79ed7ec0!8m2!3d-8.2054628!4d114.3558546\" target=\"_blank\">go to map</a></div>"
         });
         google.maps.event.addListener(marker, "click", function(e) {
-            iw.open(map, this);
+            window.open('https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313', '_blank');//iw.open(map, this);
         });
         google.maps.event.addListener(marker2, "click", function(e) {
-            iw2.open(map, this);
+            window.open('https://www.google.co.id/maps/place/Hotel+Tanjung+Asri/@-8.205463,114.353666,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xdd33067a79ed7ec0!8m2!3d-8.2054628!4d114.3558546', '_blank');// iw2.open(map, this);
         });
     }
 
@@ -245,70 +245,6 @@ $(document).ready(function() {
         });
     }
 
-    var HeartsBackground = {
-      heartHeight: 40,
-      heartWidth: 44,
-      hearts: [],
-      heartImage: 'images/heart.png',
-      maxHearts: 8,
-      minScale: 0.4,
-      draw: function() {
-        this.setCanvasSize();
-        this.ctx.clearRect(0, 0, this.w, this.h);
-        for (var i = 0; i < this.hearts.length; i++) {
-          var heart = this.hearts[i];
-          heart.image = new Image();
-          heart.image.style.height = heart.height;
-          heart.image.src = this.heartImage;
-          this.ctx.globalAlpha = heart.opacity;
-          this.ctx.drawImage (heart.image, heart.x, heart.y, heart.width, heart.height);
-        }
-        this.move();
-      },
-      move: function() {
-        for(var b = 0; b < this.hearts.length; b++) {
-          var heart = this.hearts[b];
-          heart.y += heart.ys;
-          if(heart.y > this.h) {
-            heart.x = Math.random() * this.w;
-            heart.y = -1 * this.heartHeight;
-          }
-        }
-      },
-      setCanvasSize: function() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-        this.w = this.canvas.width;
-        this.h = this.canvas.height;
-      },
-      initialize: function() {
-        this.canvas = $('#canvas')[0];
-
-        if(!this.canvas.getContext)
-          return;
-
-        this.setCanvasSize();
-        this.ctx = this.canvas.getContext('2d');
-
-        for(var a = 0; a < this.maxHearts; a++) {
-          var scale = (Math.random() * (1 - this.minScale)) + this.minScale;
-          this.hearts.push({
-            x: Math.random() * this.w,
-            y: Math.random() * this.h,
-            ys: Math.random() + 1,
-            height: scale * this.heartHeight,
-            width: scale * this.heartWidth,
-            opacity: scale
-          });
-        }
-
-        setInterval($.proxy(this.draw, this), 30);
-      }
-    };
-
-    $(document).ready(function(){
-      HeartsBackground.initialize();
-    });
 
     setTimeout(function(){
         $('[data-toggle="tooltip"]').tooltip();
@@ -317,5 +253,72 @@ $(document).ready(function() {
     $(window).on('beforeunload', function(){
       window.location.reload();
    });
+   if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+     var HeartsBackground = {
+       heartHeight: 40,
+       heartWidth: 44,
+       hearts: [],
+       heartImage: 'images/heart.png',
+       maxHearts: 8,
+       minScale: 0.4,
+       draw: function() {
+         this.setCanvasSize();
+         this.ctx.clearRect(0, 0, this.w, this.h);
+         for (var i = 0; i < this.hearts.length; i++) {
+           var heart = this.hearts[i];
+           heart.image = new Image();
+           heart.image.style.height = heart.height;
+           heart.image.src = this.heartImage;
+           this.ctx.globalAlpha = heart.opacity;
+           this.ctx.drawImage (heart.image, heart.x, heart.y, heart.width, heart.height);
+         }
+         this.move();
+       },
+       move: function() {
+         for(var b = 0; b < this.hearts.length; b++) {
+           var heart = this.hearts[b];
+           heart.y += heart.ys;
+           if(heart.y > this.h) {
+             heart.x = Math.random() * this.w;
+             heart.y = -1 * this.heartHeight;
+           }
+         }
+       },
+       setCanvasSize: function() {
+         this.canvas.width = window.innerWidth;
+         this.canvas.height = window.innerHeight;
+         this.w = this.canvas.width;
+         this.h = this.canvas.height;
+       },
+       initialize: function() {
+         this.canvas = $('#canvas')[0];
+
+         if(!this.canvas.getContext)
+           return;
+
+         this.setCanvasSize();
+         this.ctx = this.canvas.getContext('2d');
+
+         for(var a = 0; a < this.maxHearts; a++) {
+           var scale = (Math.random() * (1 - this.minScale)) + this.minScale;
+           this.hearts.push({
+             x: Math.random() * this.w,
+             y: Math.random() * this.h,
+             ys: Math.random() + 1,
+             height: scale * this.heartHeight,
+             width: scale * this.heartWidth,
+             opacity: scale
+           });
+         }
+
+         setInterval($.proxy(this.draw, this), 30);
+       }
+     };
+
+     $(document).ready(function(){
+       HeartsBackground.initialize();
+      //  document.getElementById('soundtrack').innerHTML="<audio id='background_audio1' loop autoplay><source src='music/Beautiful_in_White.mp3' type='audio/ogg'>Your browser does not support the audio element.</audio>";
+     });
+   }
 
 });
