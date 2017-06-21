@@ -76,7 +76,7 @@
                   <li><a href="#love-story">Our Story</a></li>
                   <li><a href="#gallery">Gallery</a></li>
                   <li><a href="#event-map">Location</a></li>
-                  <li><a id="link_wishes" href="#wishes">Wishes</a></li>
+                  <li><a id="link_wishes" href="#invitation">Wishes</a></li>
                   <li><a href="#invitation">Guestbook</a></li>
                 </ul>
             </nav>
@@ -244,38 +244,6 @@
                 </div>
             </div>
         </section>
-        <!-- People Involved Section -->
-        <!-- <section id="people" ng-controller="PeopleController">
-            <div class="container">
-                <div class="row">
-                    <h1>People Involved</h1>
-                    <div class="hr"></div>
-                    <div data-scrollreveal="enter top">
-                      <data-owl-carousel class="owl-carousel owl-theme mt-30" data-options="{
-                        autoPlay: 4000,
-                        stopOnHover : true,
-                        navigation : false,
-                        itemsCustom : [
-                          [320, 1],
-                          [480, 1],
-                          [768, 2],
-                          [992, 3],
-                          [1200, 3]
-                        ],
-                        pagination : true
-                      }">
-                        <div owl-carousel-item="" class="item" ng-repeat="pi in people">
-                          <img src="{{pi.image}}" alt="{{pi.status}}">
-                          <div class="description">
-                            <h2>{{pi.name}}</h2>
-                            <span>{{pi.status}}</span>
-                          </div>
-                        </div>
-                      </data-owl-carousel>
-                    </div>
-                </div>
-            </div>
-        </section> -->
 
         <!-- Love quote Section -->
         <section>
@@ -321,16 +289,15 @@
             <div id="map"></div>
         </section>
 
-        <!-- Gifts -->
-        <section id="wishes" ng-controller="GuestController">
+
+        <!-- RSVP -->
+        <section id="invitation" ng-controller="RsvpController">
             <div class="container">
                 <div class="row">
-                    <h1>Wishes</h1>
+                    <h1>Are you attending our wedding?</h1>
                     <div class="hr"></div>
-                    <div class="col-md-8 col-centered text-center mt-50">
-                        <h4>Thank you so much for all of your wishes for us, we hope everything about it will be granted by Allah, Amien!.</h4>
-                    </div>
-                    <div class="col-md-offset-1 col-md-10" data-scrollreveal="enter top">
+                    <div class="col-md-6" data-scrollreveal="enter top" ng-controller="GuestController">
+                    <h1 style="margin-bottom: -89px;font-size: 40px;">Wishes</h1>
                       <data-owl-carousel class="owl-carousel" data-options="{
                         autoPlay: 4000,
                         stopOnHover : true,
@@ -338,22 +305,13 @@
                         itemsCustom : [
                           [320, 1],
                           [480, 1],
-                          [768, 2],
-                          [992, 3],
-                          [1200, 3]
+                          [768, 1],
+                          [992, 1],
+                          [1200, 1]
                         ],
                         pagination : true
                       }">
                         <div owl-carousel-item="" ng-repeat="gs in guest" class="testimonial">
-                          <!-- <div class="pic">
-                              <div class="spinner" id="loading{{$index}}" style="background-color: #ad1457;height: 100%;width: 100%;">
-                                <div style="margin-top:63px" class="bounce1"></div>
-                                <div style="margin-top:63px" class="bounce2"></div>
-                                <div style="margin-top:63px" class="bounce3"></div>
-                              </div>
-                              <img style="display:none" id="g_image{{$index}}" ng-if="gs.image != null" ng-src="{{gs.image}}" imageonload="loading('loading{{$index}}', 'g_image{{$index}}')" alt="">
-                              <img style="display:none" id="g_image{{$index}}" ng-if="gs.image == null" ng-src="images/user.png" imageonload="loading('loading{{$index}}', 'g_image{{$index}}')" alt="">
-                          </div> -->
                           <p class="description" style="word-wrap:break-word">
                             {{gs.message}}
                           </p>
@@ -364,17 +322,7 @@
                         </div>
                       </data-owl-carousel>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RSVP -->
-        <section id="invitation" ng-controller="RsvpController">
-            <div class="container">
-                <div class="row">
-                    <h1>Are you attending our wedding?</h1>
-                    <div class="hr"></div>
-
+                    <div class="col-md-6">
                     <form class="mt-20 mb-50" name="guestForm" novalidate data-scrollreveal="enter top">
 
                         <div class="form-group attending">
@@ -391,21 +339,21 @@
                                 <div class="form-group">
                                     <input type="text" id="nameinput" maxlength="35" ng-model="form.name" name="name" value="" required>
                                     <span class="bar"></span>
-                                    <label class="text-label">Name *</label>
+                                    <label class="text-label">Name <i style="color: red">*</i></label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <input type="text" id="emailinput" maxlength="64" ng-model="form.email" name="email" value="" required>
                                     <span class="bar"></span>
-                                    <label class="text-label">E-mail *</label>
+                                    <label class="text-label">E-mail <i style="color: red">*</i></label>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <input type="text" id="phoneinput" maxlength="15" ng-model="form.phone" name="phone" value="" required>
                                     <span class="bar"></span>
-                                    <label class="text-label">Phone *</label>
+                                    <label class="text-label">Phone <i style="color: red">*</i></label>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -419,14 +367,14 @@
                                     <option value="other">Other</option>
                                   </select>
                                     <span class="bar"></span>
-                                    <label class="text-label">Relation *</label>
+                                    <label class="text-label">Relation <i style="color: red">*</i></label>
                                 </div>
                             </div>
                             <div class="col-md-4" ng-show="form.relation == 'other'">
                                 <div class="form-group">
                                     <input type="text"  id="otherinput" maxlength="20" ng-required="form.relation == 'other'" ng-model="form.other" name="other" value="">
                                     <span class="bar"></span>
-                                    <label class="text-label">Other *</label>
+                                    <label class="text-label">Other <i style="color: red">*</i></label>
                                 </div>
                             </div>
                             <div class="col-md-4" ng-show="form.relation == 'other'">
@@ -436,7 +384,7 @@
                                     <option value="fery">Fery</option>
                                   </select>
                                     <span class="bar"></span>
-                                    <label class="text-label">Of *</label>
+                                    <label class="text-label">Of <i style="color: red">*</i></label>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -444,16 +392,9 @@
                                     <textarea id="noteinput" value="" ng-model="form.message" maxlength="500" name="note" required></textarea>
                                     <span class="bar"></span>
                                     <i class="pull-right">{{500 - form.message.length}}</i>
-                                    <label class="text-label">Leave us a message *</label>
+                                    <label class="text-label">Leave us a message <i style="color: red">*</i></label>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-12">
-                                <div class="form-group">
-                                  <input id="photo-guest" type="file" name="file" onchange="angular.element(this).scope().setImages(this.files)">
-                                  <span class="bar"></span>
-                                  <label class="text-label-file">Guest Photo <i style="color:#d0d0d0">(optional)</i></label>
-                                </div>
-                            </div> -->
                         </div>
                         <!-- Notifications -->
                         <div class="col-md-8 col-centered" style="margin-top: 20px;">
@@ -477,7 +418,9 @@
                           </div>
                           {{submitButtonText}}
                         </button>
-                    </form>
+                    </form>                        
+                    </div>
+
                 </div>
             </div>
         </section>
