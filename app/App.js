@@ -102,6 +102,12 @@ app.controller('GalleryController', function($scope){
       {image:'images/gallery/gallery-15.jpg',thumb:'images/gallery/gallery-15_thumb.jpg'},
       {image:'images/gallery/gallery-16.jpg',thumb:'images/gallery/gallery-16_thumb.jpg'},
       {image:'images/gallery/gallery-17.jpg',thumb:'images/gallery/gallery-17_thumb.jpg'},
+      {image:'images/gallery/gallery-18.jpg',thumb:'images/gallery/gallery-18_thumb.jpg'},
+      {image:'images/gallery/gallery-19.jpg',thumb:'images/gallery/gallery-19_thumb.jpg'},
+      {image:'images/gallery/gallery-20.jpg',thumb:'images/gallery/gallery-20_thumb.jpg'},
+      {image:'images/gallery/gallery-21.jpg',thumb:'images/gallery/gallery-21_thumb.jpg'},
+      {image:'images/gallery/gallery-22.jpg',thumb:'images/gallery/gallery-22_thumb.jpg'},
+      {image:'images/gallery/gallery-23.jpg',thumb:'images/gallery/gallery-23_thumb.jpg'},
     ];
 });
 
