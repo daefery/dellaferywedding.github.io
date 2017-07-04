@@ -76,8 +76,8 @@
                   <li><a href="#love-story">Our Story</a></li>
                   <li><a href="#gallery">Gallery</a></li>
                   <li><a href="#event-map">Location</a></li>
-                  <li><a id="link_wishes" href="#invitation">Wishes</a></li>
                   <li><a href="#invitation">Guestbook</a></li>
+				  <li><a id="link_wishes" href="#wishes">Wishes</a></li>
                 </ul>
             </nav>
         </header>
@@ -94,26 +94,27 @@
                 </div>
 
                 <div class="row row-centered mt-40">
-                    <div class="col-lg-4 col-md-6 col-sm-6 text-center col-lg-offset-1" data-scrollreveal="enter left">
+                    <div class="col-lg-5 col-md-6 col-sm-6 text-center" data-scrollreveal="enter left">
 
-                        <div class="groom">
-                            <img src="images/groom-image-1.jpg" alt="Bride" />
-                            <h2>{{groom_fullname}}</h2>
+                        <div class="bride">
+                            <img src="images/bride-image-1.jpg" alt="Bride" />
+							<h2>{{bride_fullname}}</h2>
+                          <p>
+                            queen of house, fighters kitchen, house decorator, lover, neatly.
+                          </p>                          
+						  
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 visible-lg wed-logo" data-scrollreveal="enter top">
+			                   <i class="fa fa-heart" style="color:#ad1457; font-size:40px	"></i>
+                    </div>
+                    <div class="col-lg-5 col-md-6 col-sm-6 text-center" data-scrollreveal="enter right">
+                      <div class="groom">
+                          <img src="images/groom-image-1.jpg" alt="Bride" />
+                          <h2>{{groom_fullname}}</h2>
                             <p>
                               the good imam for her, love guard, good listener, hard worker, best friend, charismatic, comforter.
                             </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 visible-lg wed-logo" data-scrollreveal="enter top">
-			                   <i class="fa fa-heart" style="color:#ad1457; font-size:40px	"></i>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 text-center" data-scrollreveal="enter right">
-                      <div class="bride">
-                          <img src="images/bride-image-1.jpg" alt="Bride" />
-                          <h2>{{bride_fullname}}</h2>
-                          <p>
-                            queen of house, fighters kitchen, house decorator, lover, neatly.
-                          </p>
                       </div>
                     </div>
 
@@ -156,8 +157,8 @@
                                         <span>June 24th 2013</span>
                                     </div>
                                     <div class="tl-body">
-                                        <p>He prepared one special song for her.
-                                          That night, he decided to make her to be his by the song he sang while they are looking to each other in the eyes.
+                                        <p>I prepared one special song for her.
+                                          That night, i decided to make her to be mine by the song he sang while they are looking to each other in the eyes.
                                           Never regret and forget about what happened on that night till now.</p>
                                     </div>
                                 </div>
@@ -186,12 +187,12 @@
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="tl-heading">
-                                        <h4>He proposed...and she said yes :)</h4>
+                                        <h4>I proposed...and she said yes :)</h4>
                                         <span>Janury 7th 2017</span>
                                     </div>
                                     <div class="tl-body">
                                         <p>
-                                          He decided to live a life in this world and hereafter with her, grow old together, create the future together, create a happy family with all the love that they start from and through a lot of experience.
+                                          I decided to live a life in this world and hereafter with her, grow old together, create the future together, create a happy family with all the love that they start from and through a lot of experience.
                                         </p>
                                     </div>
                                 </div>
@@ -269,20 +270,26 @@
                         <div class="col-sm-4">
                             <span class="time">7:00</span>
                         </div>
-                        <div class="col-sm-2">
-                            <h2>Ijab Kabul</h2>
-                            <span class="date">July 7th 2017</span>
-                        </div>
+						<a href="https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313" target="_blank">
+							<div class="col-sm-2">
+								<h2>Ijab Kabul</h2>
+								<span class="date">July 7th 2017</span>
+							</div>
+						</a>
+
                         <div class="col-sm-2">
                             <span class="time">19:00</span>
                         </div>
-                        <div class="col-sm-4">
+						<a href="https://www.google.co.id/maps/place/Hotel+Tanjung+Asri/@-8.205463,114.353666,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xdd33067a79ed7ec0!8m2!3d-8.2054628!4d114.3558546" target="_blank">
+						<div class="col-sm-4">
                             <h2>Walimatul 'Ursy</h2>
                             <span class="date">July 8th 2017</span>
                         </div>
-                        <a href="" class="round-button lila">
+						</a>
+                        
+                        <div href="" class="round-button lila">
                             <i class="fa fa-map-marker"></i>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -296,33 +303,7 @@
                 <div class="row">
                     <h1>Are you attending our wedding?</h1>
                     <div class="hr"></div>
-                    <div class="col-md-6" data-scrollreveal="enter top" ng-controller="GuestController">
-                    <h1 style="margin-bottom: -89px;font-size: 40px;">Wishes</h1>
-                      <data-owl-carousel class="owl-carousel" data-options="{
-                        autoPlay: 4000,
-                        stopOnHover : true,
-                        navigation: false,
-                        itemsCustom : [
-                          [320, 1],
-                          [480, 1],
-                          [768, 1],
-                          [992, 1],
-                          [1200, 1]
-                        ],
-                        pagination : true
-                      }">
-                        <div owl-carousel-item="" ng-repeat="gs in guest" class="testimonial">
-                          <p class="description" style="word-wrap:break-word">
-                            {{gs.message}}
-                          </p>
-                            <h3 class="testimonial-title" style="word-wrap:break-word;">
-                              {{gs.name}}
-                              <small class="post" style="word-wrap:break-word;">{{gs.relation}}</small>
-                          </h3>
-                        </div>
-                      </data-owl-carousel>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                     <form class="mt-20 mb-50" name="guestForm" novalidate data-scrollreveal="enter top">
 
                         <div class="form-group attending">
@@ -421,6 +402,42 @@
                     </form>                        
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+		
+		<section id="wishes" ng-controller="GuestController">
+            <div class="container">
+                <div class="row">
+                    <h1>Thank You for your Whises</h1>
+                    <div class="hr"></div>
+                    <div class="col-md-12" data-scrollreveal="enter top">
+						<data-owl-carousel class="owl-carousel" data-options="{
+                        autoPlay: 4000,
+                        stopOnHover : true,
+                        navigation: false,
+                        itemsCustom : [
+                          [320, 1],
+                          [480, 1],
+                          [768, 2],
+                          [992, 3],
+                          [1200, 3]
+                        ],
+                        pagination : true
+                      }">
+                        <div owl-carousel-item="" ng-repeat="gs in guest" class="testimonial">
+                          <p class="description" style="word-wrap:break-word">
+                            {{gs.message}}
+                          </p>
+                            <h3 class="testimonial-title" style="word-wrap:break-word;">
+                              {{gs.name}}
+                              <small class="post" style="word-wrap:break-word;">{{gs.relation}}</small>
+                          </h3>
+                        </div>
+                      </data-owl-carousel>
+                    </div>
+                   
                 </div>
             </div>
         </section>

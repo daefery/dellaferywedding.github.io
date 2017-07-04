@@ -3,7 +3,7 @@
 var app = angular.module('wedding', ['ngRoute', 'ngSanitize', 'ngDialog']);
 
 app.constant('API_URL', 'http://localhost:8080/angulara/api/v1/');
-// app.constant('API_URL', 'http://ferdeapi.hostzi.com/api/v1/');
+// app.constant('API_URL', 'http://d3286a77.ngrok.io/angulara/api/v1/');
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -94,20 +94,19 @@ app.controller('StoryController', function($scope){
 app.controller('GalleryController', function($scope){
   $scope.gallery =
     [
+	  {image:'images/gallery/gallery-1.jpg',thumb:'images/gallery/gallery-1_thumb.jpg'},
+      {image:'images/gallery/gallery-2.jpg',thumb:'images/gallery/gallery-2_thumb.jpg'},
       {image:'images/gallery/gallery-10.jpg',thumb:'images/gallery/gallery-10_thumb.jpg'},
       {image:'images/gallery/gallery-11.jpg',thumb:'images/gallery/gallery-11_thumb.jpg'},
-      {image:'images/gallery/gallery-12.jpg',thumb:'images/gallery/gallery-12_thumb.jpg'},
-      {image:'images/gallery/gallery-13.jpg',thumb:'images/gallery/gallery-13_thumb.jpg'},
-      {image:'images/gallery/gallery-14.jpg',thumb:'images/gallery/gallery-14_thumb.jpg'},
-      {image:'images/gallery/gallery-15.jpg',thumb:'images/gallery/gallery-15_thumb.jpg'},
       {image:'images/gallery/gallery-16.jpg',thumb:'images/gallery/gallery-16_thumb.jpg'},
-      {image:'images/gallery/gallery-17.jpg',thumb:'images/gallery/gallery-17_thumb.jpg'},
-      {image:'images/gallery/gallery-18.jpg',thumb:'images/gallery/gallery-18_thumb.jpg'},
-      {image:'images/gallery/gallery-19.jpg',thumb:'images/gallery/gallery-19_thumb.jpg'},
-      {image:'images/gallery/gallery-20.jpg',thumb:'images/gallery/gallery-20_thumb.jpg'},
+      {image:'images/gallery/gallery-15.jpg',thumb:'images/gallery/gallery-15_thumb.jpg'},
+	  {image:'images/gallery/gallery-20.jpg',thumb:'images/gallery/gallery-20_thumb.jpg'},
       {image:'images/gallery/gallery-21.jpg',thumb:'images/gallery/gallery-21_thumb.jpg'},
-      {image:'images/gallery/gallery-22.jpg',thumb:'images/gallery/gallery-22_thumb.jpg'},
       {image:'images/gallery/gallery-23.jpg',thumb:'images/gallery/gallery-23_thumb.jpg'},
+      {image:'images/gallery/gallery-22.jpg',thumb:'images/gallery/gallery-22_thumb.jpg'},
+      {image:'images/gallery/gallery-19.jpg',thumb:'images/gallery/gallery-19_thumb.jpg'},
+      {image:'images/gallery/gallery-18.jpg',thumb:'images/gallery/gallery-18_thumb.jpg'},
+      	  
     ];
 });
 

@@ -217,19 +217,6 @@ $(document).ready(function() {
             map: map,
             title: 'Walimah'
         });
-        var iw = new google.maps.InfoWindow({
-            content: "<h4>Masjid Agung Baiturrahman (Ijab Kabul)</h4>"+
-            "<img class=\"col-sm-6 pull-left\" src=\"images/masjid.jpg\" alt=\"Masjid\" style=\"width:50%;height:50%;\">"+
-            "<div class=\"col-sm-6\"><i>Jalan Jendral Sudirman No. 137, Kepatihan, Banyuwangi, Jawa Timur 68411</i><br><br>"+
-            "<a href='https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313' target='_blank'>go to map</a></div>"
-        });
-        var iw2 = new google.maps.InfoWindow({
-            content: "<h4>Hotel Tanjung Asri (Walimatul 'Ursy)</h4>"+
-            "<img class=\"col-sm-6 pull-left\" src=\"images/hotel.jpg\" alt=\"hotel\" style=\"width:50%;height:50%;\">"+
-            "<div class=\"col-sm-6\"><i>Jalan Mawar No. 8-10, Penataban, Mojopanggung, Giri, Kabupaten Banyuwangi, Jawa Timur 68418</i><br>"+
-            "<i>phone : (0333) 421786</i><br><br>"+
-            "<a href=\"https://www.google.co.id/maps/place/Hotel+Tanjung+Asri/@-8.205463,114.353666,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xdd33067a79ed7ec0!8m2!3d-8.2054628!4d114.3558546\" target=\"_blank\">go to map</a></div>"
-        });
         google.maps.event.addListener(marker, "click", function(e) {
             window.open('https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313', '_blank');//iw.open(map, this);
         });
@@ -317,7 +304,7 @@ $(document).ready(function() {
 
      $(document).ready(function(){
        HeartsBackground.initialize();
-      //  document.getElementById('soundtrack').innerHTML="<audio id='background_audio1' loop autoplay><source src='music/Beautiful_in_White.mp3' type='audio/ogg'>Your browser does not support the audio element.</audio>";
+       document.getElementById('soundtrack').innerHTML="<audio id='background_audio1' loop autoplay><source src='music/Beautiful_in_White.mp3' type='audio/ogg'>Your browser does not support the audio element.</audio>";
      });
    }
 
