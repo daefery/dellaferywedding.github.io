@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="wedding">
+    <head>
+    <!-- Meta, title, CSS, favicon, etc. -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="wedding">
+    <title>wellcome, we loved to share our love with you</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" type="text/css" media="screen">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" /> -->
+    <!-- Lightcase -->
+    <link rel="stylesheet" href="css/lightcase.css" type="text/css" media="screen" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome/font-awesome.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="css/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl-carousel/owl.theme.css">
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="css/custom.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/ngDialog.min.css">
+    <link rel="stylesheet" href="css/ngDialog-theme-default.min.css">
+    <!-- HTML5 shiv IE8 support -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/ferde.ico">
+
+    <!-- Custom Google Font : Roboto -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- Custom Google Font : Great Vibes -->
+    <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body>
+        <canvas id="canvas" style="position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: -1;"></canvas>
+        <!-- Page Preloader -->
+		<div id="preloader"></div>
+
+        <!-- Image Header -->
+        <div id="header" class="image-header" ng-controller="HomeController">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="title">
+                            <img style="border-radius: 50%;" src="images/ferde.png" alt="" />
+                            <h1>{{bride_name}} & {{groom_name}}</h1>
+                            <p>Request the honour of your presence at their marriage</p>
+                            <span class="date">{{duedate}}</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-md-12">
+                        <!-- Countdown -->
+                        <div class="countdown mt-30 mb-40" data-countdown="2017/07/07"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header>
+            <!-- Main Navigation -->
+            <nav id="main-nav">
+                <label for="show-menu" class="show-menu wobble"><i class="fa fa-bars fa-lg"></i></label>
+                <input type="checkbox" id="show-menu" role="button">
+                <ul id="menu" class="onepage">
+                  <li><a href="#love-story">Our Story</a></li>
+                  <li><a href="#gallery">Gallery</a></li>
+                  <li><a href="#event-map">Location</a></li>
+                  <li><a href="#invitation">Guestbook</a></li>
+				  <li><a id="link_wishes" href="#wishes">Wishes</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="keep"></div>
+
+        <!-- Love Story Section -->
+        <section id="love-story" ng-controller="StoryController">
+            <div class="container">
+
+                <div class="row">
+                    <h1>Our Love Story</h1>
+                    <div class="hr"></div>
+
+                </div>
+
+                <div class="row row-centered mt-40">
+                    <div class="col-lg-5 col-md-6 col-sm-6 text-center" data-scrollreveal="enter left">
+
+                        <div class="bride">
+                            <img src="images/bride-image-1.jpg" alt="Bride" />
+							<h2>{{bride_fullname}}</h2>
+                          <p>
+                            queen of house, fighters kitchen, house decorator, lover, neatly.
+                          </p>                          
+						  
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4 visible-lg wed-logo" data-scrollreveal="enter top">
+			                   <i class="fa fa-heart" style="color:#ad1457; font-size:40px	"></i>
+                    </div>
+                    <div class="col-lg-5 col-md-6 col-sm-6 text-center" data-scrollreveal="enter right">
+                      <div class="groom">
+                          <img src="images/groom-image-1.jpg" alt="Bride" />
+                          <h2>{{groom_fullname}}</h2>
+                            <p>
+                              the good imam for her, love guard, good listener, hard worker, best friend, charismatic, comforter.
+                            </p>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- How it all began Section -->
+        <section id="how-began">
+            <div class="container">
+                <div class="row">
+                    <h1>How it all began?</h1>
+                    <div class="hr"></div>
+                    <div class="col-md-12">
+                        <ul class="timeline">
+
+                            <li id="tl_first" data-scrollreveal="enter left">
+                                <div class="tl-circ">
+                                    <i class="fa fa-dot-circle-o"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="tl-heading">
+                                        <h4>We met for the first time</h4>
+                                        <span>June 1th 2013</span>
+                                    </div>
+                                    <div class="tl-body">
+                                        <p>We weren't know each other before, after a friend of us make it happen.
+                                          We meet for a bowl of ramen in the middle of the night, we have a common in taste of food. So our first meet was fun.</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="timeline-inverted" data-scrollreveal="enter right">
+                                <div class="tl-circ">
+                                    <i class="fa fa-dot-circle-o"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="tl-heading">
+                                        <h4>Our first date</h4>
+                                        <span>June 24th 2013</span>
+                                    </div>
+                                    <div class="tl-body">
+                                        <p>I prepared one special song for her.
+                                          That night, i decided to make her to be mine by the song he sang while they are looking to each other in the eyes.
+                                          Never regret and forget about what happened on that night till now.</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li data-scrollreveal="enter left">
+                                <div class="tl-circ">
+                                    <i class="fa fa-dot-circle-o"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="tl-heading">
+                                        <h4>We live long distance relationship(LDR)</h4>
+                                        <span>November 28th 2013 - Present</span>
+                                    </div>
+                                    <div class="tl-body">
+                                        <p>At first, we doubt how to live this kind of relationship before. we have through so many things, sad, happy, tears and smile we shared until now.
+                                          but we persisted in all the problem that happened in our life. that makes our self stronger time to time.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="timeline-inverted" data-scrollreveal="enter right">
+                                <div class="tl-circ">
+                                    <i class="fa fa-dot-circle-o"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="tl-heading">
+                                        <h4>I proposed...and she said yes :)</h4>
+                                        <span>Janury 7th 2017</span>
+                                    </div>
+                                    <div class="tl-body">
+                                        <p>
+                                          I decided to live a life in this world and hereafter with her, grow old together, create the future together, create a happy family with all the love that they start from and through a lot of experience.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Text with background image -->
+        <section>
+
+            <div class="love-quote">
+                <span>And of His signs is that He created for you from yourselves mates that you may find tranquillity in them and He placed between you affection and mercy. Indeed in that are signs for a people who give thought.</span>
+                <i style="font-weight: 100;color: #fff;"><br>(Qs. Ar. Ruum (30) : 21)</i>
+            </div>
+
+        </section>
+        <!-- Gallery -->
+        <section id="gallery" ng-controller="GalleryController">
+            <div class="container">
+                <div class="row">
+                    <h1>Gallery</h1>
+                    <div class="hr"></div>
+                    <div data-scrollreveal="enter top">
+                      <data-owl-carousel class="owl-carousel owl-theme mt-50" data-options="{
+                        autoPlay: 4000,
+                        stopOnHover : true,
+                        navigation : false,
+                        itemsCustom : [
+                        [320, 1],
+                        [480, 1],
+                        [768, 2],
+                        [992, 3],
+                        [1200, 3]
+                        ],
+                        pagination : true
+                      }">
+                      <div owl-carousel-item="" ng-repeat="gal in gallery" class="item">
+                        <div class="image">
+                          <a href="{{gal.image}}" data-rel="lightcase:mw-gallery">
+                            <img src="{{gal.thumb}}" alt="">
+                          </a>
+                        </div>
+                      </div>
+                    </data-owl-carousel>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Love quote Section -->
+        <section>
+
+            <div id="parallax-quote" class="love-quote big">
+              <span>The believing men and believing women are allies of one another. They enjoin what is right and forbid what is wrong and establish prayer and give zakah and obey Allah and His Messenger. Those - Allah will have mercy upon them. Indeed, Allah is Exalted in Might and Wise.</span>
+              <i style="font-weight: 100;color: #fff;"><br>(Qs. At Taubah (9) : 71)</i>
+            </div>
+
+        </section>
+
+        <!-- Event Map Section -->
+        <section id="event-map">
+          <div class="container">
+            <div class="row">
+                <h1>Wedding Location</h1>
+                <div class="hr"></div>
+            </div>
+          </div>
+            <div class="map-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <span class="time">7:00</span>
+                        </div>
+						<a href="https://www.google.co.id/maps/place/Masjid+Agung+Baiturrahman/@-8.2093901,114.3706426,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd145250a20c0d3:0x80c707c40ff8996a!8m2!3d-8.2093901!4d114.3728313" target="_blank">
+							<div class="col-sm-2">
+								<h2>Ijab Kabul</h2>
+								<span class="date">July 7th 2017</span>
+							</div>
+						</a>
+
+                        <div class="col-sm-2">
+                            <span class="time">19:00</span>
+                        </div>
+						<a href="https://www.google.co.id/maps/place/Hotel+Tanjung+Asri/@-8.205463,114.353666,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xdd33067a79ed7ec0!8m2!3d-8.2054628!4d114.3558546" target="_blank">
+						<div class="col-sm-4">
+                            <h2>Walimatul 'Ursy</h2>
+                            <span class="date">July 8th 2017</span>
+                        </div>
+						</a>
+                        
+                        <div href="" class="round-button lila">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="map"></div>
+        </section>
+
+
+        <!-- RSVP -->
+        <section id="invitation" ng-controller="RsvpController">
+            <div class="container">
+                <div class="row">
+                    <h1>Are you attending our wedding?</h1>
+                    <div class="hr"></div>
+                    <div class="col-md-12">
+                    <form class="mt-20 mb-50" name="guestForm" novalidate data-scrollreveal="enter top">
+
+                        <div class="form-group attending">
+                            <input class="radio-input" type="radio" ng-checked="true" id="show-form" ng-value="true" name="attending" ng-model="form.attend" checked/>
+                            <label class="radio-label" for="show-form">Yes, I am attending</label>
+
+                            <input class="radio-input" type="radio" ng-value="false" id="hide-form" name="attending" ng-model="form.attend" />
+                            <label class="radio-label" for="hide-form">Sorry, I can’t attend</label>
+                        </div>
+
+                        <div class="form-fields clearfix" id="contact">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" id="nameinput" maxlength="35" ng-model="form.name" name="name" value="" required>
+                                    <span class="bar"></span>
+                                    <label class="text-label">Name <i style="color: red">*</i></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" id="emailinput" maxlength="64" ng-model="form.email" name="email" value="" required>
+                                    <span class="bar"></span>
+                                    <label class="text-label">E-mail <i style="color: red">*</i></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <input type="text" id="phoneinput" maxlength="15" ng-model="form.phone" name="phone" value="" required>
+                                    <span class="bar"></span>
+                                    <label class="text-label">Phone <i style="color: red">*</i></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                  <select ng-model="form.relation" id="sel1" required>
+                                    <option value="friends of della">Della's Friends</option>
+                                    <option value="friends of fery">Fery's Friends</option>
+                                    <option value="friends of both">Friend of both</option>
+                                    <option value="della's family">Della's Family</option>
+                                    <option value="fery's family">Fery's Family</option>
+                                    <option value="other">Other</option>
+                                  </select>
+                                    <span class="bar"></span>
+                                    <label class="text-label">Relation <i style="color: red">*</i></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4" ng-show="form.relation == 'other'">
+                                <div class="form-group">
+                                    <input type="text"  id="otherinput" maxlength="20" ng-required="form.relation == 'other'" ng-model="form.other" name="other" value="">
+                                    <span class="bar"></span>
+                                    <label class="text-label">Other <i style="color: red">*</i></label>
+                                </div>
+                            </div>
+                            <div class="col-md-4" ng-show="form.relation == 'other'">
+                                <div class="form-group">
+                                  <select ng-model="form.withWhom" id="sel1" ng-required="form.relation == 'other'">
+                                    <option value="della">Della</option>
+                                    <option value="fery">Fery</option>
+                                  </select>
+                                    <span class="bar"></span>
+                                    <label class="text-label">Of <i style="color: red">*</i></label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea id="noteinput" value="" ng-model="form.message" maxlength="500" name="note" required></textarea>
+                                    <span class="bar"></span>
+                                    <i class="pull-right">{{500 - form.message.length}}</i>
+                                    <label class="text-label">Leave us a message <i style="color: red">*</i></label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Notifications -->
+                        <div class="col-md-8 col-centered" style="margin-top: 20px;">
+                            <div id="bad-msg" class="alert alert-danger" ng-show="submitted && formErrorMessage.length > 0">
+                              <ul>
+                                <li ng-repeat="err in formErrorMessage">
+                                  <span ng-bind-html="err"></span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div id="server-msg" class="alert alert-danger" ng-show="msgError != undefined">
+                              {{msgError}}
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <button class="submit button lila" type="submit" ng-click="save(guestForm.$valid,form)" id="submitinput" ng-disabled="submitButtonText==''">
+                          <div class="spinner" ng-show="submitButtonText == ''">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                          </div>
+                          {{submitButtonText}}
+                        </button>
+                    </form>                        
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+		
+		<section id="wishes" ng-controller="GuestController">
+            <div class="container">
+                <div class="row">
+                    <h1>Thank You for your Whises</h1>
+                    <div class="hr"></div>
+                    <div class="col-md-12" data-scrollreveal="enter top">
+						<data-owl-carousel class="owl-carousel" data-options="{
+                        autoPlay: 4000,
+                        stopOnHover : true,
+                        navigation: false,
+                        itemsCustom : [
+                          [320, 1],
+                          [480, 1],
+                          [768, 2],
+                          [992, 3],
+                          [1200, 3]
+                        ],
+                        pagination : true
+                      }">
+                        <div owl-carousel-item="" ng-repeat="gs in guest" class="testimonial">
+                          <p class="description" style="word-wrap:break-word">
+                            {{gs.message}}
+                          </p>
+                            <h3 class="testimonial-title" style="word-wrap:break-word;">
+                              {{gs.name}}
+                              <small class="post" style="word-wrap:break-word;">{{gs.relation}}</small>
+                          </h3>
+                        </div>
+                      </data-owl-carousel>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+          <p>
+              © 2017 | dia & fyp | By <a href="http://ferde.us" target="_blank">Wedding Ferde.</a>
+          </p>
+          <div id="soundtrack" style="display:none"></div>
+        </footer>
+
+        <!-- Scroll to top -->
+      <div id="top-scroll"><i class="fa fa-chevron-up"></i></div>
+
+      <!-- JavaScript Files -->
+      <!-- jQuery -->
+    	<script src="js/jquery-1.11.3.min.js"></script>
+      <!-- angularjs -->
+      <script src="js/angular.min.js"></script>
+      <script src="js/angular-route.min.js"></script>
+      <script src="js/ngDialog.min.js"></script>
+      <script src="js/angular-sanitize.min.js"></script>
+      <script src="app/app.js"></script>
+      <!-- Device.js -->
+    	<script src="js/device.min.js"></script>
+      <!-- Bootstrap -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    	<!-- <script src="js/bootstrap.min.js"></script> -->
+      <!-- Owl Carousel -->
+    	<script src="js/owl.carousel.js"></script>
+      <!-- Lightcase -->
+    	<script src="js/lightcase.js"></script>
+      <!-- Countdown -->
+    	<script src="js/countdown.js"></script>
+      <!-- Parallax -->
+    	<script src="js/jquery.parallax.js"></script>
+      <!-- Google Maps -->
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCypj_-Y8aMaUUxO-3F67W1AaNMsoYXYP0"></script>
+      <!-- PHP Form -->
+      <script src="js/jquery.form.min.js" type="text/javascript"></script>
+      <!-- scrol reveal -->
+      <script src="js/scrollreveal.min.js"></script>
+      <!-- Custom JS Functions -->
+      <script src="js/scripts.js"></script>
+    	<script src="js/scroll.js"></script>
+
+    </body>
+</html>
