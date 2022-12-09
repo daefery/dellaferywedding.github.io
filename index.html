@@ -47,21 +47,23 @@
 
         <!-- Image Header -->
         <div id="header" class="image-header" ng-controller="HomeController">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="title">
-                            <img style="border-radius: 50%;" src="images/ferde.png" alt="" />
-                            <h1>{{bride_name}} & {{groom_name}}</h1>
-                            <p>Request the honour of your presence at their marriage</p>
-                            <span class="date">{{duedate}}</span>
+            <div class="bannerWrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="title">
+                                <img style="border-radius: 50%;" src="images/ferde.png" alt="" />
+                                <h1>{{bride_name}} & {{groom_name}}</h1>
+                                <p>Request the honour of your presence at their marriage</p>
+                                <span class="date">{{duedate}}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-				<div class="row">
-                    <div class="col-md-12">
-                        <!-- Countdown -->
-                        <div class="countdown mt-30 mb-40" data-countdown="2017/07/07"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Countdown -->
+                            <div class="countdown mt-30 mb-40" data-countdown="2017/07/07"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -411,7 +413,6 @@
             <div class="container">
                 <div class="row">
                     <h1>Thank You for your Whises</h1>
-                    <div class="hr"></div>
                     <div class="col-md-12" data-scrollreveal="enter top">
 						<data-owl-carousel class="owl-carousel" data-options="{
                         autoPlay: 4000,
